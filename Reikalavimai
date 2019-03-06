@@ -1,0 +1,30 @@
+Kliento e-mail: sigi2@comcast.net
+
+
+KlIENTO PAGEIDAVIMAI:
+Labas 
+Labai šaunu, kad jums tiko apps idėja. Pats baigiau to meto KPI Radioelektroniką 1985, taigi pamenu visus dėstytojus, projektus, linksmas ir liūdnesnes akimirkas :)
+Radijo apps prireikė, nes neliko beveik jokių 
+informavimo priemonių ( yra gal pora laidų FM ir AM po 1-2 val, amerikonų stotyse.)
+
+Apps būtų gerai turėti ir Apple ir Android.
+Norime turėti 2 streams, vienas muzika, žinios, antras audioknygos. 
+Designas maximaliai paprastas, bet ryškių spalvų.
+Papildomos funkcijos optional:
+1. Galimybė paaukoti stočiai per Paypal.
+2. Linkas registruotis į stoties nariu database.
+3. Linkas į stoties website ( domain yra, website nesukurtas), facebook.
+4. Būtų gerai jei apps nustotų groti - pause, kai žmogui skambina, ar jis pereina į kitą app.
+
+Demo stream šiuo metu vyksta:
+sigi2ko.asuscomm.com:8000
+antras stream bus tarkim portu 8001
+
+Mano sūnus buvo pradėjęs daryti apps išvaizdą, vakare atsiūsiu jo padarytus pvz.
+Jei patiks galit jais remtis.
+
+Paskutinis noras būtų gale gauti apps source kodus, kad vėliau būtų galima būtų pakeisti stream IP, linkus, pasikeitus serveriams.
+
+Rašykit, jei kilo klausimų ir sėkmės koduojant.
+
+Sigitas Unguraitis
