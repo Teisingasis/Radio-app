@@ -1,23 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light">
+    android:orientation="vertical"
+    android:clipToPadding="false"
+    android:focusableInTouchMode="true"
+    tools:context="com.example.revobanga.ChatFragment">
 
-    <TextView
+    <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/messages_view"
+        android:layout_weight="2"
+        android:divider="#fff"
+        android:layout_height="wrap_content"
+        />
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:ems="10"
+        android:hint="Write a message"
+        android:inputType="text"
+        android:paddingHorizontal="10dp"
+        android:text="" />
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="asdasfd"
-        android:id="@+id/textView"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"
-        android:textColor="#FF0000" />
-  <com.cenkgun.chatbar.ChatBarView
-       android:id="@+id/chatBar"
-       android:layout_alignParentBottom="true"
-       android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:scaleType="fitCenter"
+        android:padding="20dp"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/ic_send"/>
 
-        ></com.cenkgun.chatbar.ChatBarView>
-
-</RelativeLayout>
+</LinearLayout>
