@@ -4,11 +4,20 @@
     android:layout_height="match_parent"
     android:background="@android:color/background_light">
 
-    <TextView
+
+    <Button
+        android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cia yra stociu langas"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:text="Pirma stotis" />
 
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:text="Antra stotis" />
 </RelativeLayout>
