@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:clipToPadding="false"
     android:focusableInTouchMode="true"
-    tools:context="com.example.revobanga.ChatFragment">
+    tools:context="com.example.revobanga.MainActivity">
 
     <ListView
         android:layout_width="match_parent"
@@ -15,6 +15,11 @@
         android:divider="#fff"
         android:layout_height="wrap_content"
         />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="horizontal">
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
@@ -34,4 +39,5 @@
         android:layout_marginHorizontal="10dp"
         android:background="@drawable/ic_send"/>
 
+</LinearLayout>
 </LinearLayout>
