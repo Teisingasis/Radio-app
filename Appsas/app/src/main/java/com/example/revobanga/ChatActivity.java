@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 
-public class ChatFragment extends Activity {
+public class ChatActivity extends Activity {
 
 
     @Override
