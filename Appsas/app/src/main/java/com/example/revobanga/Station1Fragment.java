@@ -8,7 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+
 
 
 public class Station1Fragment extends Fragment {
@@ -17,24 +17,20 @@ public class Station1Fragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_stotis1, container, false);
-        StationsFragment stationsFragment = new StationsFragment();
-        MediaPlayer mediaPlayer = stationsFragment.mediaPlayer;
-        firstStation(view,mediaPlayer);
+        MediaPlayer mediaPlayer = new MediaPlayer();
+        String url = "http://sigi2ko.asuscomm.com:8000";
+        try {
+            mediaPlayer.setDataSource(url);
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+
+        }
+        catch (Exception e){
+
+        }
+
         return view;
     }
-    private void firstStation(View view, final MediaPlayer mediaPlayer){
-        Button playPause = view.findViewById(R.id.button5);
-        playPause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!mediaPlayer.isPlaying()) {
-                        mediaPlayer.start();
-                }
-                else{
-                    mediaPlayer.pause();
-                }
 
-            }
-        });
     }
-}
+

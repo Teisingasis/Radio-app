@@ -1,5 +1,6 @@
 package com.example.revobanga;
 
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -23,8 +24,6 @@ public class StationsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_radio_stations, container, false);
-        mediaPlayer = new MediaPlayer();
-        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         firstStation(view);
         secondStation(view);
         return view;
@@ -33,21 +32,16 @@ public class StationsFragment extends Fragment {
     private void firstStation(View view) {
         final TextView currentsong = view.findViewById(R.id.current);
         Button pirmStotis = view.findViewById(R.id.button3);
-        url = "http://www.kozco.com/tech/32.mp3";
         pirmStotis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new Station1Fragment()).commit();
-                try {
-                    mediaPlayer.setDataSource(url);
-                    mediaPlayer.prepare();
-                    mediaPlayer.start();
+                startActivity(new Intent(getActivity(),Station1Fragment.class));
+
                     currentsong.setText("First Station");
-                } catch (IOException e) {
-                    e.printStackTrace();
+
                     currentsong.setText("Current Station");
-                }
+
             }
         });
     }
