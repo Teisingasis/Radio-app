@@ -17,10 +17,25 @@ public class Station1Fragment extends Fragment {
     View view;
     boolean stop = false;
 
+    TextView info;
+
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_stotis1, container, false);
+        info = view.findViewById(R.id.ready);
+        ;
+        switch (MainActivity.red) {
+            case 0:
+                info.setText("Ready");
+                break;
+            case 1:
+                info.setText("Playing");
+                break;
+            default:
+                info.setText("Not Ready");
+                break;
+        }
         playPause();
         return view;
     }
@@ -34,13 +49,18 @@ public class Station1Fragment extends Fragment {
                     mediaPlayer.reset();
                     stop = true;
                 } else {
-                    if(MainActivity.ready) {
+                    if (MainActivity.ready) {
+                        info.setText("Playing");
+                        MainActivity.red = 1;
                         mediaPlayer.start();
                     }
                 }
                 if (stop) {
-                    MainActivity.station1Initialize();
-                    stop=false;
+                    ((MainActivity) getActivity()).station1Initialize();
+                    info.setText("Not Ready");
+                    MainActivity.red = 2;
+                    stop = false;
+                    MainActivity.ready = false;
                 }
             }
         });
