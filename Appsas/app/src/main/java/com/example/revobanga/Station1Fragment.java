@@ -13,10 +13,8 @@ import android.widget.TextView;
 
 
 public class Station1Fragment extends Fragment {
-    MediaPlayer mediaPlayer = MainActivity.mediaPlayer;
+    Player player = MainActivity.player;
     View view;
-    boolean stop = false;
-
     TextView info;
 
     @Nullable
@@ -24,18 +22,8 @@ public class Station1Fragment extends Fragment {
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_stotis1, container, false);
         info = view.findViewById(R.id.ready);
-        ;
-        switch (MainActivity.red) {
-            case 0:
-                info.setText("Ready");
-                break;
-            case 1:
-                info.setText("Playing");
-                break;
-            default:
-                info.setText("Not Ready");
-                break;
-        }
+
+        state(player.state);
         playPause();
         return view;
     }
@@ -45,25 +33,24 @@ public class Station1Fragment extends Fragment {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mediaPlayer.isPlaying()) {
-                    mediaPlayer.reset();
-                    stop = true;
-                } else {
-                    if (MainActivity.ready) {
-                        info.setText("Playing");
-                        MainActivity.red = 1;
-                        mediaPlayer.start();
-                    }
-                }
-                if (stop) {
-                    ((MainActivity) getActivity()).station1Initialize();
-                    info.setText("Not Ready");
-                    MainActivity.red = 2;
-                    stop = false;
-                    MainActivity.ready = false;
-                }
+                int status = player.Clicked();
+                state(status);
             }
         });
+    }
+
+    public void state(int state) {
+        switch (state) {
+            case 1:
+                info.setText("Ready");
+                break;
+            case 2:
+                info.setText("Playing");
+                break;
+            default:
+                info.setText("Not Ready");
+                break;
+        }
     }
 
 }

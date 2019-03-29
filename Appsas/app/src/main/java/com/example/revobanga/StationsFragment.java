@@ -15,9 +15,6 @@ import android.widget.TextView;
 
 public class StationsFragment extends Fragment {
 
-    public MediaPlayer mediaPlayer;
-    public String url;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

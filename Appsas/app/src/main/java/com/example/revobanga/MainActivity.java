@@ -14,9 +14,10 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
+    public static Player player;
+    public static Player player2;
     public static MediaPlayer mediaPlayer = new MediaPlayer();
-    public static boolean ready = false;
-    public static int red = 2;
+    public static MediaPlayer mediaPlayer2 = new MediaPlayer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +40,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StationsFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_radioStations);
         }
-
-        station1Initialize();
+        player = new Player(mediaPlayer, getString(R.string.link1));
+        player.stationInitialize(getString(R.string.link1));
+        player2 = new Player(mediaPlayer2, getString(R.string.link1));
+        player2.stationInitialize(getString(R.string.link1));
     }
 
 
@@ -79,23 +82,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
-
-    public void station1Initialize() {
-        try {
-            mediaPlayer.setDataSource(getString(R.string.link1));
-            mediaPlayer.prepareAsync();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                ready = true;
-                red=0;
-                //  info.setText("Ready");
-            }
-        });
-    }
-
 }
