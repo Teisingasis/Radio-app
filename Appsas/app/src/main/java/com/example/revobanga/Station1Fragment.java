@@ -9,16 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 public class Station1Fragment extends Fragment {
     MediaPlayer mediaPlayer = MainActivity.mediaPlayer;
     View view;
+    boolean stop = false;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-         view = inflater.inflate(R.layout.fragment_stotis1, container, false);
-
+        view = inflater.inflate(R.layout.fragment_stotis1, container, false);
         playPause();
         return view;
     }
@@ -28,19 +30,21 @@ public class Station1Fragment extends Fragment {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                    @Override
-                    public void onPrepared(MediaPlayer mp) {
-                        if(mediaPlayer.isPlaying()){
-                            mediaPlayer.stop();
-                        }
-                        else{
-                            mediaPlayer.start();
-                        }
+                if (mediaPlayer.isPlaying()) {
+                    mediaPlayer.reset();
+                    stop = true;
+                } else {
+                    if(MainActivity.ready) {
+                        mediaPlayer.start();
                     }
-                });
+                }
+                if (stop) {
+                    MainActivity.station1Initialize();
+                    stop=false;
+                }
             }
         });
     }
+
 }
 
