@@ -22,9 +22,8 @@ public class Test_Station1Fragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.demo_ui_stotis1, container, false);
-        StationsFragment stationsFragment = new StationsFragment();
-        MediaPlayer mediaPlayer = stationsFragment.mediaPlayer;
-        firstStation(view,mediaPlayer);
+
+        firstStation(view,player);
         initializeMediaPlayer();
         return view;
     }
