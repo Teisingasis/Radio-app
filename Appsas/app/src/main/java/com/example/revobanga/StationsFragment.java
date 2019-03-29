@@ -1,7 +1,6 @@
 package com.example.revobanga;
 
-import android.content.Intent;
-import android.media.AudioManager;
+
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.io.IOException;
 
 public class StationsFragment extends Fragment {
 
@@ -36,7 +34,7 @@ public class StationsFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getActivity(),Station1Fragment.class));
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new Station1Fragment()).commit();
 
                     currentsong.setText("First Station");
 

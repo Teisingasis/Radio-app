@@ -8,29 +8,39 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.Button;
 
 
 public class Station1Fragment extends Fragment {
-
+    MediaPlayer mediaPlayer = MainActivity.mediaPlayer;
+    View view;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_stotis1, container, false);
-        MediaPlayer mediaPlayer = new MediaPlayer();
-        String url = "http://sigi2ko.asuscomm.com:8000";
-        try {
-            mediaPlayer.setDataSource(url);
-            mediaPlayer.prepare();
-            mediaPlayer.start();
+         view = inflater.inflate(R.layout.fragment_stotis1, container, false);
 
-        }
-        catch (Exception e){
-
-        }
-
+        playPause();
         return view;
     }
 
+    public void playPause() {
+        Button play = view.findViewById(R.id.button5);
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    @Override
+                    public void onPrepared(MediaPlayer mp) {
+                        if(mediaPlayer.isPlaying()){
+                            mediaPlayer.stop();
+                        }
+                        else{
+                            mediaPlayer.start();
+                        }
+                    }
+                });
+            }
+        });
     }
+}
 

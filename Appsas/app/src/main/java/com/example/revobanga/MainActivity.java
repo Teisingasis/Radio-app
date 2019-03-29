@@ -1,6 +1,6 @@
 package com.example.revobanga;
 
-import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +13,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
+    public static MediaPlayer mediaPlayer = new MediaPlayer();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +35,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StationsFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_radioStations);
         }
+        try {
+            mediaPlayer.setDataSource("http://sigi2ko.asuscomm.com:8000");
+            mediaPlayer.prepareAsync();
+      //      mediaPlayer.start();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
     }
 
