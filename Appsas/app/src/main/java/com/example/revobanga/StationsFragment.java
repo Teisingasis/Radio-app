@@ -33,9 +33,9 @@ public class StationsFragment extends Fragment {
 
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, new Station1Fragment()).commit();
 
-                    currentsong.setText("First Station");
+                currentsong.setText("First Station");
 
-                    currentsong.setText("Current Station");
+                currentsong.setText("Current Station");
 
             }
         });
