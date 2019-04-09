@@ -11,6 +11,16 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import android.os.AsyncTask;
+
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
@@ -18,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static Player player2;
     public static MediaPlayer mediaPlayer = new MediaPlayer();
     public static MediaPlayer mediaPlayer2 = new MediaPlayer();
+    ArrayList<UserEntry> mContents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         player.stationInitialize(getString(R.string.link1));
         player2 = new Player(mediaPlayer2, getString(R.string.link1));
         player2.stationInitialize(getString(R.string.link1));
+
+        //prepareContent();
+       //new WebTask().execute(new String[] {""});
     }
 
 
@@ -82,4 +96,73 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
+
+    private void prepareContent()
+    {
+        mContents = new ArrayList<>();
+
+        UserDataBaseHandler dbhandler = new UserDataBaseHandler(this);
+
+        dbhandler.addEntry(new UserEntry(0, "Jonas", "aaa"));
+        dbhandler.addEntry(new UserEntry(0, "Juozas", "111"));
+        dbhandler.addEntry(new UserEntry(0, "Petras", "test"));
+
+        ArrayList<UserEntry> entries = dbhandler.getAllEntries();
+        mContents = entries;
+    }
+
+    /*class WebTask extends AsyncTask<String, Void, String>
+    {
+        @Override
+        protected String doInBackground(String... params)
+        {
+            StringBuilder builder = new StringBuilder();
+            if(params.length > 0) {
+                try {
+                    URL url = new URL(params[0]);
+                    HttpURLConnection con = (HttpURLConnection)url.openConnection();
+                    InputStream in = con.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                    String line = null;
+                    while((line = reader.readLine()) != null)
+                    {
+                        builder.append(line);
+                    }
+                    con.disconnect();
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+            return builder.toString();
+
+        }
+
+        @Override
+        protected void onPostExecute(String s)
+        {
+            parseJson(s);
+        }
+    }
+
+    public void parseJson(String json)
+    {
+        try {
+            JSONObject object = new JSONObject(json);
+            JSONArray array = object.getJSONArray("Users_Connection_Info");
+            if(mContents != null) {
+                mContents.clear();
+                for (int i = 0; i < array.length(); i++) {
+                    JSONObject obj = array.getJSONObject(i);
+                    UserEntry entry = new UserEntry(i, obj.getString("name"), obj.getString("password"));
+                    mContents.add(entry);
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }*/
 }
