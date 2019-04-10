@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         player2 = new Player(mediaPlayer2, getString(R.string.link1));
         player2.stationInitialize(getString(R.string.link1));
 
-        //prepareContent();
-       //new WebTask().execute(new String[] {""});
+        prepareContent();
+       new WebTask().execute(new String[] {""});
     }
 
 
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mContents = entries;
     }
 
-    /*class WebTask extends AsyncTask<String, Void, String>
+    class WebTask extends AsyncTask<String, Void, String>
     {
         @Override
         protected String doInBackground(String... params)
@@ -164,5 +164,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         {
             e.printStackTrace();
         }
-    }*/
+    }
 }
