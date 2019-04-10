@@ -1,6 +1,5 @@
 package com.example.revobanga;
 
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,7 +15,7 @@ import android.widget.TextView;
 public class Station1Fragment extends Fragment {
     Player player = MainActivity.player;
     View view;
-    TextView info;
+    static TextView info;
 
     @Nullable
     @Override
@@ -40,7 +39,8 @@ public class Station1Fragment extends Fragment {
         });
     }
 
-    public void state(int state) {
+
+    public static void state(int state) {
         switch (state) {
             case 1:
                 info.setText("Ready");

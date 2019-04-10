@@ -9,6 +9,7 @@ public class Player {
     int state = 0;
     String link;
 
+
     public Player(MediaPlayer mediaPlayer, String link) {
         this.mediaPlayer = mediaPlayer;
         this.link = link;
@@ -48,7 +49,9 @@ public class Player {
             public void onPrepared(MediaPlayer mp) {
                 ready = true;
                 state = 1;
+                Station1Fragment.state(state);
             }
         });
     }
+
 }
