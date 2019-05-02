@@ -20,6 +20,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import android.os.AsyncTask;
+import android.widget.EditText;
+
+import com.scaledrone.lib.Message;
+import com.scaledrone.lib.Room;
+import com.scaledrone.lib.RoomListener;
+import com.scaledrone.lib.Scaledrone;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,8 +34,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static Player player2;
     public static MediaPlayer mediaPlayer = new MediaPlayer();
     public static MediaPlayer mediaPlayer2 = new MediaPlayer();
+    public static String name;
+    public static MemberData member;
     ArrayList<UserEntry> mContents;
-
+    private EditText editText;
+    private String user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +64,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         player.stationInitialize(getString(R.string.link1));
         player2 = new Player(mediaPlayer2, getString(R.string.link1));
         player2.stationInitialize(getString(R.string.link1));
+       // editText = (EditText) findViewById(R.id.editText);
+member=new MemberData(name);
 
         prepareContent();
        new WebTask().execute(new String[] {""});
@@ -96,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
+
 
     private void prepareContent()
     {
