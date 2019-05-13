@@ -1,72 +1,94 @@
 <?xml version = "1.0" encoding = "utf-8"?>
-<RelativeLayout xmlns:android = "http://schemas.android.com/apk/res/android"
-    xmlns:tools = "http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height = "match_parent" android:paddingLeft= "20dp"
-    android:paddingRight = "20dp"
-    android:paddingTop = "50dp"
-    android:paddingBottom = "10dp" tools:context = ".MainActivity">
-    
-    <TextView
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:text = "Revo Banga"
-        android:id = "@+id/textView"
-
-        android:layout_centerHorizontal = "true"
-        android:textColor = "#ff7aff24"
-        android:textSize = "35dp" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#343C3D"
+    android:paddingLeft="20dp"
+    android:paddingTop="50dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="10dp"
+    tools:context=".MainActivity">
 
     <EditText
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:id = "@+id/login"
-        android:hint = "Enter Name"
-        android:focusable = "true"
-        android:textColorHighlight = "#ff7eff15"
-        android:textColorHint = "#ffff25e6"
-        android:layout_marginTop = "46dp"
-        android:layout_below = "@+id/imageView"
-        android:layout_alignParentLeft = "true"
-        android:layout_alignParentStart = "true"
-        android:layout_alignParentRight = "true"
-        android:layout_alignParentEnd = "true" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@mipmap/ic_launcheris"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/login"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
+        android:layout_width="283dp"
+        android:layout_height="43dp"
+        android:layout_below="@id/imageView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/round_button"
+        android:drawableLeft="@drawable/ic_login"
+        android:hint="Email address"
+        android:textColorHighlight="#7CB342"
+        android:textColorHint="#C1ABB4B4"
+        android:textIsSelectable="false" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
         android:id="@+id/passwd"
+        android:layout_width="283dp"
+        android:layout_height="43dp"
         android:layout_below="@+id/login"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/login"
-        android:layout_alignEnd="@+id/login"
-        android:textColorHint="#ffff299f"
-        android:hint="Password" />
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/round_button"
+        android:drawableLeft="@drawable/ic_password"
+        android:ems="10"
+        android:fadingEdge="horizontal|vertical"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColorHint="#C1ABB4B4" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="login"
         android:id="@+id/button"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true" />
+        android:layout_marginLeft="90dp"
+        android:layout_marginRight="90dp"
+        android:layout_marginBottom="130dp"
+        android:background="@drawable/roundbutton2"
+        android:text="login"
+        android:textSize="18sp" />
 
     <Button
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:id="@+id/button2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_marginLeft="90dp"
+        android:layout_marginRight="90dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/roundbutton2"
+        android:text="Register"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="false"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="91dp"
+        android:adjustViewBounds="false"
+        app:srcCompat="@drawable/FINAL" />
 
 </RelativeLayout>
