@@ -56,15 +56,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StationsFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_radioStations);
         }
-        player = new Player(mediaPlayer, getString(R.string.link1));
-        player.stationInitialize(getString(R.string.link1));
-        player2 = new Player(mediaPlayer2, getString(R.string.link1));
-        player2.stationInitialize(getString(R.string.link1));
+       player = new Player(mediaPlayer, getString(R.string.link1));
+      player.stationInitialize(getString(R.string.link1));
+       player2 = new Player(mediaPlayer2, getString(R.string.link1));
+       player2.stationInitialize(getString(R.string.link1));
        // editText = (EditText) findViewById(R.id.editText);
 member=new MemberData(name);
 
-        prepareContent();
-       new WebTask().execute(new String[] {""});
+//        prepareContent();
+//       new WebTask().execute(new String[] {""});
     }
 
 
@@ -81,8 +81,8 @@ member=new MemberData(name);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FavoritesFragment()).commit();
                 break;
             case R.id.nav_settings:
-              //  getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
-                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
+              //  startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 break;
             case R.id.nav_timetable:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TimetableFragment()).commit();
