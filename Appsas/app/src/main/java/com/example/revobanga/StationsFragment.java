@@ -31,9 +31,9 @@ public class StationsFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new Station1Fragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new Station1Fragment(),"station1").commit();
 
-                currentsong.setText("First Station");
+               currentsong.setText("First Station");
 
                 currentsong.setText("Current Station");
 
@@ -46,7 +46,7 @@ public class StationsFragment extends Fragment {
         antrStotis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new Station2Fragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new Station2Fragment(),"station2").commit();
             }
         });
     }

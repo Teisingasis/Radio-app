@@ -22,10 +22,6 @@ import java.util.ArrayList;
 import android.os.AsyncTask;
 import android.widget.EditText;
 
-import com.scaledrone.lib.Message;
-import com.scaledrone.lib.Room;
-import com.scaledrone.lib.RoomListener;
-import com.scaledrone.lib.Scaledrone;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static MediaPlayer mediaPlayer2 = new MediaPlayer();
     public static String name;
     public static MemberData member;
+    public static Station1Fragment fragment;
+    public static Station2Fragment fragment2;
     ArrayList<UserEntry> mContents;
     private EditText editText;
     private String user;
@@ -61,7 +59,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setCheckedItem(R.id.nav_radioStations);
         }
         player = new Player(mediaPlayer, getString(R.string.link1));
+        fragment = (Station1Fragment) getSupportFragmentManager().findFragmentByTag("station1");
         player.stationInitialize(getString(R.string.link1));
+        fragment2 = (Station2Fragment) getSupportFragmentManager().findFragmentByTag("station2");
         player2 = new Player(mediaPlayer2, getString(R.string.link1));
         player2.stationInitialize(getString(R.string.link1));
        // editText = (EditText) findViewById(R.id.editText);
@@ -151,9 +151,9 @@ member=new MemberData(name);
 
         }
 
-        @Override
-        protected void onPostExecute(String s)
-        {
+       @Override
+       protected void onPostExecute(String s)
+       {
             parseJson(s);
         }
     }
