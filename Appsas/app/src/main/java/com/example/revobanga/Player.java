@@ -27,7 +27,7 @@ public class Player {
         }
         if (stop) {
 
-            stationInitialize(this.link);
+            stationInitialize(link);
             state = 0;
             stop = false;
             ready = false;
@@ -36,9 +36,9 @@ public class Player {
         return state;
     }
 
-    public void stationInitialize(String linkas) {
+    public void stationInitialize(String link) {
         try {
-            mediaPlayer.setDataSource(linkas);
+            mediaPlayer.setDataSource(link);
             mediaPlayer.prepareAsync();
 
         } catch (Exception e) {
