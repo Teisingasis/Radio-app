@@ -27,6 +27,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import android.os.AsyncTask;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private TextView txtEmail;
     private SQLiteHandler db;
     private SessionManager session;
+    private long backPressedTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,7 +153,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (backPressedTime + 2000 > System.currentTimeMillis()){
+                //super.onBackPressed();
+                moveTaskToBack(true);
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+            }
+            else {
+                Toast.makeText(getBaseContext(), "Press back again", Toast.LENGTH_SHORT).show();
+            }
+
+            backPressedTime = System.currentTimeMillis();
         }
     }
 }
