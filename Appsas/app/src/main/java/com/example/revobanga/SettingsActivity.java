@@ -50,14 +50,6 @@ import android.view.MenuItem;
             }
         }
 
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            if (item.getItemId() == android.R.id.home) {
-                onBackPressed();
-            }
-            return super.onOptionsItemSelected(item);
-        }
-
         private static void bindPreferenceSummaryToValue(Preference preference) {
             preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
 
