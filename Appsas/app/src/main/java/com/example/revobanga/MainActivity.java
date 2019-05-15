@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // --------------------------------------
         // DATABASE
         // --------------------------------------
-       /* super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_main);
 
         txtName = (TextView) findViewById(R.id.name);
         txtEmail = (TextView) findViewById(R.id.email);
@@ -88,14 +88,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // Displaying the user details on the screen
         txtName.setText(name);
-        txtEmail.setText(email);*/
+        txtEmail.setText(email);
     }
 
     /**
     * Logging out the user. Will set isLoggedIn flag to false in shared
     * preferences Clears the user data from sqlite users table
     * */
-   /*     private void logoutUser() {
+        private void logoutUser() {
             session.setLogin(false);
 
             db.deleteUsers();
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
-        }*/
+        }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

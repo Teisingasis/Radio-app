@@ -24,32 +24,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    public String user;
-    EditText username;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        Login();
-        MainActivity.name = user;
-    }
-
-    private void Login() {
-        Button logIn = findViewById(R.id.button);
-        username = findViewById(R.id.login);
-
-        logIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                user = username.getText().toString();
-                MainActivity.name = user;
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-            }
-        });
-    }
-}
- /* private static final String TAG = RegisterActivity.class.getSimpleName();
+//    public String user;
+//    EditText username;
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_login);
+//        Login();
+//        MainActivity.name = user;
+//    }
+//
+//    private void Login() {
+//        Button logIn = findViewById(R.id.button);
+//        username = findViewById(R.id.login);
+//
+//        logIn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                user = username.getText().toString();
+//                MainActivity.name = user;
+//                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+//            }
+//        });
+//    }
+//}
+  private static final String TAG = RegisterActivity.class.getSimpleName();
     private Button btnLogin;
     private Button btnLinkToRegister;
     private EditText inputEmail;
@@ -63,8 +63,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        inputEmail = (EditText) findViewById(R.id.email);
-        inputPassword = (EditText) findViewById(R.id.password);
+        inputEmail = (EditText) findViewById(R.id.login);
+        inputPassword = (EditText) findViewById(R.id.passwd);
         btnLogin = (Button) findViewById(R.id.button);
         btnLinkToRegister = (Button) findViewById(R.id.button2);
 
@@ -90,8 +90,8 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                String email = inputEmail.getText().toString().trim();
-                String password = inputPassword.getText().toString().trim();
+                String email = inputEmail.getText().toString();
+                String password = inputPassword.getText().toString();
 
                 // Check for empty data in the form
                 if (!email.isEmpty() && !password.isEmpty()) {
@@ -116,9 +116,10 @@ public class LoginActivity extends AppCompatActivity {
         btnLinkToRegister.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),
-                        RegisterActivity.class);
-                startActivity(i);
+//                Intent i = new Intent(getApplicationContext(),
+//                        RegisterActivity.class);
+//                startActivity(i);
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                 finish();
             }
         });
@@ -128,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
     /**
      * function to verify login details in mysql db
      */
-  /*  private void checkLogin(final String email, final String password) {
+    private void checkLogin(final String email, final String password) {
         // Tag used to cancel the request
         String tag_string_req = "req_login";
 
@@ -219,4 +220,4 @@ public class LoginActivity extends AppCompatActivity {
         if (pDialog.isShowing())
             pDialog.dismiss();
     }
-}*/
+}
