@@ -63,11 +63,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StationsFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_radioStations);
         }
-        player = new Player(mediaPlayer, getString(R.string.link1));
+        player = new Player(mediaPlayer, getString(R.string.link1),1);
         fragment = (Station1Fragment) getSupportFragmentManager().findFragmentByTag("station1");
         player.stationInitialize(getString(R.string.link1));
         fragment2 = (Station2Fragment) getSupportFragmentManager().findFragmentByTag("station2");
-        player2 = new Player(mediaPlayer2, getString(R.string.link1));
+        player2 = new Player(mediaPlayer2, getString(R.string.link1),2);
         player2.stationInitialize(getString(R.string.link1));
         // editText = (EditText) findViewById(R.id.editText);
         member = new MemberData(name);

@@ -7,12 +7,14 @@ public class Player{
     boolean stop = false;
     boolean ready = false;
     int state = 0;
+    int num=0;
     String link;
 
 
-    public Player(MediaPlayer mediaPlayer, String link) {
+    public Player(MediaPlayer mediaPlayer, String link,int num) {
         this.mediaPlayer = mediaPlayer;
         this.link = link;
+        this.num = num;
     }
 
     public int Clicked() {
@@ -49,15 +51,14 @@ public class Player{
             public void onPrepared(MediaPlayer mp) {
                 ready = true;
                 state = 1;
-                if(MainActivity.fragment !=null && MainActivity.fragment.isVisible()) {
+                if(MainActivity.fragment !=null && MainActivity.fragment.isVisible() && num==1) {
                     Station1Fragment.state(state);
                 }
-                if(MainActivity.fragment2 !=null && MainActivity.fragment2.isVisible()) {
+                if(MainActivity.fragment2 !=null && MainActivity.fragment2.isVisible()&& num==2) {
                     Station2Fragment.state(state);
                 }
             }
         });
     }
-
 
 }
