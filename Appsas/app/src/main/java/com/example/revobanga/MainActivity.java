@@ -12,13 +12,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-<<<<<<< HEAD
 import java.util.HashMap;
 import android.widget.Button;
 import android.widget.TextView;
 import android.view.View;
 import android.content.Intent;
-=======
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.BufferedReader;
@@ -29,8 +27,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import android.os.AsyncTask;
 import android.widget.EditText;
-
->>>>>>> parent of 0afd6d5... Revert "Demo settings menu"
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
@@ -82,44 +78,44 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main);
 
-        txtName = (TextView) findViewById(R.id.name);
-        txtEmail = (TextView) findViewById(R.id.email);
-
-        // SqLite database handler
-        db = new SQLiteHandler(getApplicationContext());
-
-        // session manager
-        session = new SessionManager(getApplicationContext());
-
-        if (!session.isLoggedIn()) {
-            logoutUser();
-        }
-
-        // Fetching user details from sqlite
-        HashMap<String, String> user = db.getUserDetails();
-
-        String name = user.get("name");
-        String email = user.get("email");
-
-        // Displaying the user details on the screen
-        txtName.setText(name);
-        txtEmail.setText(email);
+//        txtName = (TextView) findViewById(R.id.name);
+//        txtEmail = (TextView) findViewById(R.id.email);
+//
+//        // SqLite database handler
+//        db = new SQLiteHandler(getApplicationContext());
+//
+//        // session manager
+//        session = new SessionManager(getApplicationContext());
+//
+//        if (!session.isLoggedIn()) {
+//            logoutUser();
+//        }
+//
+//        // Fetching user details from sqlite
+//        HashMap<String, String> user = db.getUserDetails();
+//
+//        String name = user.get("name");
+//        String email = user.get("email");
+//
+//        // Displaying the user details on the screen
+//        txtName.setText(name);
+//        txtEmail.setText(email);
     }
 
     /**
     * Logging out the user. Will set isLoggedIn flag to false in shared
     * preferences Clears the user data from sqlite users table
     * */
-        private void logoutUser() {
-            session.setLogin(false);
-
-            db.deleteUsers();
-
-            // Launching the login activity
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-        }
+//        private void logoutUser() {
+//            session.setLogin(false);
+//
+//            db.deleteUsers();
+//
+//            // Launching the login activity
+//            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
