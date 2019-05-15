@@ -1,32 +1,21 @@
 package com.example.revobanga;
 
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import android.os.AsyncTask;
-import android.widget.EditText;
-
-import com.scaledrone.lib.Message;
-import com.scaledrone.lib.Room;
-import com.scaledrone.lib.RoomListener;
-import com.scaledrone.lib.Scaledrone;
-
+import java.util.HashMap;
+import android.widget.Button;
+import android.widget.TextView;
+import android.view.View;
+import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
@@ -36,9 +25,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static MediaPlayer mediaPlayer2 = new MediaPlayer();
     public static String name;
     public static MemberData member;
-    ArrayList<UserEntry> mContents;
-    private EditText editText;
-    private String user;
+    public static Station1Fragment fragment;
+    public static Station2Fragment fragment2;
+    private TextView txtName;
+    private TextView txtEmail;
+    private SQLiteHandler db;
+    private SessionManager session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,16 +53,58 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setCheckedItem(R.id.nav_radioStations);
         }
         player = new Player(mediaPlayer, getString(R.string.link1));
+        fragment = (Station1Fragment) getSupportFragmentManager().findFragmentByTag("station1");
         player.stationInitialize(getString(R.string.link1));
+        fragment2 = (Station2Fragment) getSupportFragmentManager().findFragmentByTag("station2");
         player2 = new Player(mediaPlayer2, getString(R.string.link1));
         player2.stationInitialize(getString(R.string.link1));
-       // editText = (EditText) findViewById(R.id.editText);
-member=new MemberData(name);
+        // editText = (EditText) findViewById(R.id.editText);
+        member = new MemberData(name);
 
-        prepareContent();
-       new WebTask().execute(new String[] {""});
+        // --------------------------------------
+        // DATABASE
+        // --------------------------------------
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_main);
+
+        txtName = (TextView) findViewById(R.id.name);
+        txtEmail = (TextView) findViewById(R.id.email);
+
+        // SqLite database handler
+        db = new SQLiteHandler(getApplicationContext());
+
+        // session manager
+        session = new SessionManager(getApplicationContext());
+
+        if (!session.isLoggedIn()) {
+            logoutUser();
+        }
+
+        // Fetching user details from sqlite
+        HashMap<String, String> user = db.getUserDetails();
+
+        String name = user.get("name");
+        String email = user.get("email");
+
+        // Displaying the user details on the screen
+        txtName.setText(name);
+        txtEmail.setText(email);
     }
 
+    /**
+    * Logging out the user. Will set isLoggedIn flag to false in shared
+    * preferences Clears the user data from sqlite users table
+    * */
+        private void logoutUser() {
+            session.setLogin(false);
+
+            db.deleteUsers();
+
+            // Launching the login activity
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -105,76 +139,6 @@ member=new MemberData(name);
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-        }
-    }
-
-
-    private void prepareContent()
-    {
-        mContents = new ArrayList<>();
-
-        UserDataBaseHandler dbhandler = new UserDataBaseHandler(this);
-
-        dbhandler.addEntry(new UserEntry(0, "Jonas", "aaa"));
-        dbhandler.addEntry(new UserEntry(0, "Juozas", "111"));
-        dbhandler.addEntry(new UserEntry(0, "Petras", "test"));
-
-        ArrayList<UserEntry> entries = dbhandler.getAllEntries();
-        mContents = entries;
-    }
-
-    class WebTask extends AsyncTask<String, Void, String>
-    {
-        @Override
-        protected String doInBackground(String... params)
-        {
-            StringBuilder builder = new StringBuilder();
-            if(params.length > 0) {
-                try {
-                    URL url = new URL(params[0]);
-                    HttpURLConnection con = (HttpURLConnection)url.openConnection();
-                    InputStream in = con.getInputStream();
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-                    String line = null;
-                    while((line = reader.readLine()) != null)
-                    {
-                        builder.append(line);
-                    }
-                    con.disconnect();
-                }
-                catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
-            }
-            return builder.toString();
-
-        }
-
-        @Override
-        protected void onPostExecute(String s)
-        {
-            parseJson(s);
-        }
-    }
-
-    public void parseJson(String json)
-    {
-        try {
-            JSONObject object = new JSONObject(json);
-            JSONArray array = object.getJSONArray("Users_Connection_Info");
-            if(mContents != null) {
-                mContents.clear();
-                for (int i = 0; i < array.length(); i++) {
-                    JSONObject obj = array.getJSONObject(i);
-                    UserEntry entry = new UserEntry(i, obj.getString("name"), obj.getString("password"));
-                    mContents.add(entry);
-                }
-            }
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
         }
     }
 }

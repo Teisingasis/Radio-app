@@ -14,14 +14,14 @@ import android.widget.TextView;
 public class Station2Fragment extends Fragment {
     Player player = MainActivity.player2;
     View view;
-    TextView info;
+    static TextView info;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_stotis2, container, false);
         info = view.findViewById(R.id.ready2);
-
+        MainActivity.fragment2= (Station2Fragment) getFragmentManager().findFragmentByTag("station2");
         state(player.state);
         playPause();
         return view;
@@ -38,7 +38,7 @@ public class Station2Fragment extends Fragment {
         });
     }
 
-    public void state(int state) {
+    public static void state(int state) {
         switch (state) {
             case 1:
                 info.setText("Ready");

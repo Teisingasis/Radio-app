@@ -22,7 +22,7 @@ public class Station1Fragment extends Fragment {
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_stotis1, container, false);
         info = view.findViewById(R.id.ready);
-
+        MainActivity.fragment= (Station1Fragment) getFragmentManager().findFragmentByTag("station1");
         state(player.state);
         playPause();
         return view;

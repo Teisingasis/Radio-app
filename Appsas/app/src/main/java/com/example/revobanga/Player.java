@@ -2,7 +2,7 @@ package com.example.revobanga;
 
 import android.media.MediaPlayer;
 
-public class Player {
+public class Player{
     MediaPlayer mediaPlayer;
     boolean stop = false;
     boolean ready = false;
@@ -49,9 +49,15 @@ public class Player {
             public void onPrepared(MediaPlayer mp) {
                 ready = true;
                 state = 1;
-                Station1Fragment.state(state);
+                if(MainActivity.fragment !=null && MainActivity.fragment.isVisible()) {
+                    Station1Fragment.state(state);
+                }
+                if(MainActivity.fragment2 !=null && MainActivity.fragment2.isVisible()) {
+                    Station2Fragment.state(state);
+                }
             }
         });
     }
+
 
 }

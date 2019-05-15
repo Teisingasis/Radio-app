@@ -23,37 +23,15 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginActivity extends AppCompatActivity {
-//    public String user;
-//    EditText username;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_login);
-//        Login();
-//        MainActivity.name = user;
-//    }
-//
-//    private void Login() {
-//        Button logIn = findViewById(R.id.button);
-//        username = findViewById(R.id.login);
-//
-//        logIn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                user = username.getText().toString();
-//                MainActivity.name = user;
-//                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-//            }
-//        });
-//    }
-//}
-  private static final String TAG = RegisterActivity.class.getSimpleName();
-    private Button btnLogin;
-    private Button btnLinkToRegister;
+public class RegisterActivity extends AppCompatActivity {
+    private static final String TAG = RegisterActivity.class.getSimpleName();
+
+    private Button btnRegister;
+    private Button btnLinkToLogin;
+    private EditText inputFullName;
     private EditText inputEmail;
     private EditText inputPassword;
+
     private ProgressDialog pDialog;
     private SessionManager session;
     private SQLiteHandler db;
@@ -61,46 +39,45 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
 
-        inputEmail = (EditText) findViewById(R.id.login);
-        inputPassword = (EditText) findViewById(R.id.passwd);
-        btnLogin = (Button) findViewById(R.id.button);
-        btnLinkToRegister = (Button) findViewById(R.id.button2);
+        inputFullName = (EditText) findViewById(R.id.name);
+        inputEmail = (EditText) findViewById(R.id.email);
+        inputPassword = (EditText) findViewById(R.id.password);
+        btnRegister = (Button) findViewById(R.id.btnRegister);
+        btnLinkToLogin = (Button) findViewById(R.id.btnLinkToLoginScreen);
 
         // Progress dialog
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
 
-        // SQLite database handler
-        db = new SQLiteHandler(getApplicationContext());
-
         // Session manager
         session = new SessionManager(getApplicationContext());
+
+        // SQLite database handler
+        db = new SQLiteHandler(getApplicationContext());
 
         // Check if user is already logged in or not
         if (session.isLoggedIn()) {
             // User is already logged in. Take him to main activity
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(RegisterActivity.this,
+                    MainActivity.class);
             startActivity(intent);
             finish();
         }
 
-        // Login button Click Event
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-
+        // Register Button Click event
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                String email = inputEmail.getText().toString();
-                String password = inputPassword.getText().toString();
+                String name = inputFullName.getText().toString().trim();
+                String email = inputEmail.getText().toString().trim();
+                String password = inputPassword.getText().toString().trim();
 
-                // Check for empty data in the form
-                if (!email.isEmpty() && !password.isEmpty()) {
-                    // login user
-                    checkLogin(email, password);
+                if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
+                    registerUser(name, email, password);
                 } else {
-                    // Prompt user to enter credentials
                     Toast.makeText(getApplicationContext(),
-                            "Please enter the credentials!", Toast.LENGTH_LONG)
+                            "Please enter your details!", Toast.LENGTH_LONG)
                             .show();
                 }
                 InputMethodManager inputManager = (InputMethodManager)
@@ -112,14 +89,13 @@ public class LoginActivity extends AppCompatActivity {
 
         });
 
-        // Link to Register Screen
-        btnLinkToRegister.setOnClickListener(new View.OnClickListener() {
+        // Link to Login Screen
+        btnLinkToLogin.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-//                Intent i = new Intent(getApplicationContext(),
-//                        RegisterActivity.class);
-//                startActivity(i);
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                Intent i = new Intent(getApplicationContext(),
+                        LoginActivity.class);
+                startActivity(i);
                 finish();
             }
         });
@@ -127,34 +103,32 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     /**
-     * function to verify login details in mysql db
-     */
-    private void checkLogin(final String email, final String password) {
+     * Function to store user in WordPress API will post params(tag, name,
+     * email, password) to register url
+     * */
+    private void registerUser(final String name, final String email,
+                              final String password) {
         // Tag used to cancel the request
-        String tag_string_req = "req_login";
+        String tag_string_req = "req_register";
 
-        pDialog.setMessage("Logging in ...");
+        pDialog.setMessage("Registering ...");
         showDialog();
 
         StringRequest strReq = new StringRequest(Request.Method.POST,
-                AppConfig.URL + AppConfig.ENDPOINT_LOGIN, new Response.Listener<String>() {
+                AppConfig.URL + AppConfig.ENDPOINT_REGISTER, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Login Response: " + response.toString());
+                Log.d(TAG, "Register Response: " + response.toString());
                 hideDialog();
 
                 try {
                     JSONObject jObj = new JSONObject(response);
                     int status = jObj.getInt("status");
+                    if (status == 2){
+                        // User successfully stored in WordPress
 
-                    // Check for error node in json
-                    if (status == 2) {
-                        // user successfully logged in
-                        // Create login session
-                        session.setLogin(true);
-
-                        // Now store the user in SQLite
+                        // Now, storing the user in sqlite
                         String user_id = jObj.getString("user_id");
 
                         JSONObject user = jObj.getJSONObject("user");
@@ -166,21 +140,34 @@ public class LoginActivity extends AppCompatActivity {
                         // Inserting row in users table
                         db.addUser(name, email, user_id, created_at);
 
-                        // Launch main activity
-                        Intent intent = new Intent(LoginActivity.this,
-                                MainActivity.class);
+                        Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
+
+                        // Launch login activity
+                        Intent intent = new Intent(
+                                RegisterActivity.this,
+                                LoginActivity.class);
                         startActivity(intent);
                         finish();
-                    } else {
-                        // Error in login. Get the error message
-                        String errorMsg = "Invalid credentials!";
+                    }
+                    else if (status == 1){
+
+                        // Error occurred in registration. Get the error
+                        // message
+                        String errorMsg = "Error";
                         Toast.makeText(getApplicationContext(),
                                 errorMsg, Toast.LENGTH_LONG).show();
                     }
+                    else{
+
+                        // Error occurred in registration. Get the error
+                        // message
+                        String errorMsg = "Error";
+                        Toast.makeText(getApplicationContext(),
+                                errorMsg, Toast.LENGTH_LONG).show();
+                    }
+
                 } catch (JSONException e) {
-                    // JSON error
                     e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -188,7 +175,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Login Error: " + error.getMessage());
+                Log.e(TAG, "Registration Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_LONG).show();
                 hideDialog();
@@ -197,9 +184,10 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             protected Map<String, String> getParams() {
-                // Posting parameters to login url
+                // Posting params to register url
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("username", email);
+                params.put("username", name);
+                params.put("email", email);
                 params.put("pass", password);
 
                 return params;
