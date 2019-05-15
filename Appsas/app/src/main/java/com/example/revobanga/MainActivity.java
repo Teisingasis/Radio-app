@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 System.exit(1);
             }
             else {
-                Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Double press to exit", Toast.LENGTH_SHORT).show();
             }
 
             backPressedTime = System.currentTimeMillis();
