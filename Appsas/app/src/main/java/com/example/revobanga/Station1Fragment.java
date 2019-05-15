@@ -9,11 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 
 public class Station1Fragment extends Fragment {
     Player player = MainActivity.player;
+    Player player2= MainActivity.player2;
     View view;
     static TextView info;
 
@@ -33,8 +35,15 @@ public class Station1Fragment extends Fragment {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int status = player.Clicked();
-                state(status);
+                if(!player2.mediaPlayer.isPlaying()) {
+                    int status = player.Clicked();
+                    state(status);
+                }
+                else{
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "Please turn off second station", Toast.LENGTH_LONG)
+                            .show();
+                }
             }
         });
     }

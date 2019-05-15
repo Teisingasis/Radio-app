@@ -27,6 +27,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import android.os.AsyncTask;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private TextView txtEmail;
     private SQLiteHandler db;
     private SessionManager session;
+    private long backPressedTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,11 +65,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StationsFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_radioStations);
         }
-        player = new Player(mediaPlayer, getString(R.string.link1));
+        player = new Player(mediaPlayer, getString(R.string.link1),1);
         fragment = (Station1Fragment) getSupportFragmentManager().findFragmentByTag("station1");
         player.stationInitialize(getString(R.string.link1));
         fragment2 = (Station2Fragment) getSupportFragmentManager().findFragmentByTag("station2");
-        player2 = new Player(mediaPlayer2, getString(R.string.link1));
+        player2 = new Player(mediaPlayer2, getString(R.string.link1),2);
         player2.stationInitialize(getString(R.string.link1));
         // editText = (EditText) findViewById(R.id.editText);
         member = new MemberData(name);
@@ -151,7 +153,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (backPressedTime + 2000 > System.currentTimeMillis()){
+                //super.onBackPressed();
+                moveTaskToBack(true);
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+            }
+            else {
+                Toast.makeText(getBaseContext(), "Double press to exit", Toast.LENGTH_SHORT).show();
+            }
+
+            backPressedTime = System.currentTimeMillis();
         }
     }
 }
