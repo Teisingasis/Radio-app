@@ -25,7 +25,7 @@ public class StationsFragment extends Fragment {
     }
 
     private void firstStation(View view) {
-        final TextView currentsong = view.findViewById(R.id.current);
+        //final TextView currentsong = view.findViewById(R.id.current);
         Button pirmStotis = view.findViewById(R.id.button3);
         pirmStotis.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,9 +33,9 @@ public class StationsFragment extends Fragment {
 
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, new Station1Fragment(),"station1").commit();
 
-               currentsong.setText("First Station");
+              // currentsong.setText("First Station");
 
-                currentsong.setText("Current Station");
+              //  currentsong.setText("Current Station");
 
             }
         });
