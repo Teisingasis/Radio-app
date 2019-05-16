@@ -153,6 +153,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_profile:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
                 break;
+            case R.id.logout:
+                firebaseAuth.signOut();
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                finish();
+                break;
         }
 
         drawer.closeDrawer(GravityCompat.START);
@@ -166,8 +171,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             if (backPressedTime + 2000 > System.currentTimeMillis()){
                 //super.onBackPressed();
-                firebaseAuth.signOut();
-                finish();
+
                 moveTaskToBack(true);
                 android.os.Process.killProcess(android.os.Process.myPid());
                 System.exit(1);
