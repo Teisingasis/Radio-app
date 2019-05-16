@@ -29,6 +29,9 @@ import android.os.AsyncTask;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
     public static Player player;
@@ -44,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private SQLiteHandler db;
     private SessionManager session;
     private long backPressedTime;
+    FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener authStateListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +77,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         player2 = new Player(mediaPlayer2, getString(R.string.link1),2);
         player2.stationInitialize(getString(R.string.link1));
         // editText = (EditText) findViewById(R.id.editText);
-        member = new MemberData(name);
+        firebaseAuth = FirebaseAuth.getInstance();
+        authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user == null){
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                    finish();
+                }
+            }
+        };
 
         // --------------------------------------
         // DATABASE
@@ -109,14 +124,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     * preferences Clears the user data from sqlite users table
     * */
 //        private void logoutUser() {
-//            session.setLogin(false);
-//
-//            db.deleteUsers();
-//
-//            // Launching the login activity
-//            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-//            startActivity(intent);
-//            finish();
+//                           firebaseAuth.signOut();
+//                           firebaseAuth.
+//                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+//                finish();
 //        }
 
     @Override
@@ -155,6 +166,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             if (backPressedTime + 2000 > System.currentTimeMillis()){
                 //super.onBackPressed();
+                firebaseAuth.signOut();
+                finish();
                 moveTaskToBack(true);
                 android.os.Process.killProcess(android.os.Process.myPid());
                 System.exit(1);
@@ -164,6 +177,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
             backPressedTime = System.currentTimeMillis();
+        }
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        firebaseAuth.addAuthStateListener(authStateListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(authStateListener!=null){
+            firebaseAuth.removeAuthStateListener(authStateListener);
         }
     }
 }
