@@ -82,5 +82,22 @@
         android:layout_marginTop="60dp"
         android:adjustViewBounds="false"
         app:srcCompat="@drawable/final123" />
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="15dp"
+        />
+    <Button
+        android:text="I forgot password"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:id="@+id/remind"
+        android:background="@null"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginBottom="8dp"
+        android:layout_below="@id/sign_in_button"
+        />
 
 </RelativeLayout>

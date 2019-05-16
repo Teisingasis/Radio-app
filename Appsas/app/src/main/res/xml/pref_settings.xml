@@ -2,7 +2,7 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="General">
-
+<!--
         <EditTextPreference
             android:defaultValue="@string/default_gallery_storage"
             android:key="@string/key_gallery_name"
@@ -81,5 +81,6 @@
                 android:action="android.intent.action.VIEW"
                 android:data="@string/url_terms" />
         </Preference>
+        -->
     </PreferenceCategory>
 </PreferenceScreen>
