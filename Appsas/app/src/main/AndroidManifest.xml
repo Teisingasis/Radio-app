@@ -13,6 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SettingsActivity"></activity>
         <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".NewPasswordActivity"></activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

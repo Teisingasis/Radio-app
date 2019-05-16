@@ -24,9 +24,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
-    EditText loginEmail,loginPassword;
-    Button loginButton,registerButton,newPassButton;
+public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+    EditText loginEmail, loginPassword;
+    Button loginButton, registerButton, newPassButton;
     private static final int RC_SIGN_IN = 9001;
     private SignInButton signInButton;
     FirebaseAuth firebaseAuth;
@@ -42,8 +42,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         newPassButton = (Button) findViewById(R.id.remind);
         firebaseAuth = FirebaseAuth.getInstance();
-        if(firebaseAuth.getCurrentUser()!=null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+        if (firebaseAuth.getCurrentUser() != null) {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -52,8 +52,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .build();
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(LoginActivity.this,this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
+                .enableAutoManage(LoginActivity.this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -62,40 +62,48 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 signIn();
             }
         });
+        newPassButton.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 startActivity(new Intent(LoginActivity.this, NewPasswordActivity.class));
+             }
+         });
         Login();
         Register();
     }
 
     private void signIn() {
         Intent signIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        startActivityForResult(signIntent,RC_SIGN_IN);
+        startActivityForResult(signIntent, RC_SIGN_IN);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==RC_SIGN_IN){
+        if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            if(result.isSuccess()){
+            if (result.isSuccess()) {
                 GoogleSignInAccount account = result.getSignInAccount();
                 authWithGoogle(account);
             }
         }
     }
+
     private void authWithGoogle(GoogleSignInAccount account) {
-        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(),null);
+        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                if (task.isSuccessful()) {
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();
-                }
-                else{
-                    Toast.makeText(getApplicationContext(),"Auth Error",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Auth Error", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
+
     private void Login() {
 
 
@@ -144,6 +152,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+
     private void Register() {
         Button Reg = findViewById(R.id.button2);
 
