@@ -5,4 +5,5 @@
     <color name="colorPrimaryA">#277E67</color>
     <color name="colorAccent">#277E67</color>
     <color name="colorButtonA">#60222424</color>
+    <color name="colorBackground">#343C3D</color>
 </resources>

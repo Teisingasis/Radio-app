@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light">
+    android:background="@color/colorBackground"
+    android:gravity="center_horizontal|center_vertical"
+    android:orientation="vertical">
 
 
-    <TextView
+    <!--<TextView
         android:id="@+id/current"
         android:layout_width="418dp"
         android:layout_height="68dp"
-        android:layout_marginTop="496dp"
+        android:layout_marginTop="644dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="#FFCDD2"
@@ -21,27 +23,29 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textColor="#322"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:text="Pirma stotis"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:background="@drawable/roundbutton2"
+        android:text="STREAM 1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="monospace" />
+
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:text="Antra stotis"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/roundbutton2"
+        android:text="STREAM 2"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
