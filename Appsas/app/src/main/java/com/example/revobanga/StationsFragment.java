@@ -21,6 +21,7 @@ public class StationsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_radio_stations, container, false);
         firstStation(view);
         secondStation(view);
+
         return view;
     }
 

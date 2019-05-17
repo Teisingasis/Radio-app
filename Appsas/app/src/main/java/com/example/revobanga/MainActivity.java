@@ -34,11 +34,10 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
-    public static Player player;
-    public static Player player2;
+    public static Player player,player2;
+
     public static MediaPlayer mediaPlayer = new MediaPlayer();
     public static MediaPlayer mediaPlayer2 = new MediaPlayer();
-    public static String name;
     public static MemberData member;
     public static Station1Fragment fragment;
     public static Station2Fragment fragment2;
@@ -70,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StationsFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_radioStations);
         }
+
+
         player = new Player(mediaPlayer, getString(R.string.link1),1);
         fragment = (Station1Fragment) getSupportFragmentManager().findFragmentByTag("station1");
         player.stationInitialize(getString(R.string.link1));
@@ -119,19 +120,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        txtEmail.setText(email);
     }
 
-    /**
-    * Logging out the user. Will set isLoggedIn flag to false in shared
-    * preferences Clears the user data from sqlite users table
-    * */
-//        private void logoutUser() {
-//                           firebaseAuth.signOut();
-//                           firebaseAuth.
-//                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-//                finish();
-//        }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Button prof=findViewById(R.id.profile);
+        prof.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+            }
+        });
         switch (item.getItemId()) {
             case R.id.nav_radioStations:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StationsFragment()).commit();
@@ -149,9 +146,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_timetable:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TimetableFragment()).commit();
-                break;
-            case R.id.nav_profile:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
                 break;
             case R.id.logout:
                 firebaseAuth.signOut();

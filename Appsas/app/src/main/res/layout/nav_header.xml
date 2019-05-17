@@ -8,10 +8,11 @@
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
+    <Button
+        android:id="@+id/profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcheris_round" />
+        android:background="@mipmap/ic_launcheris_round" />
 
     <TextView
         android:layout_width="wrap_content"
