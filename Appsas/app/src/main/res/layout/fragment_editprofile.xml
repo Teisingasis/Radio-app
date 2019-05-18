@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    android:padding="10dp" >
+    <EditText
+        android:id="@+id/edit_username"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="Username"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColorHighlight = "#ff7eff15"
+        android:textColorHint = "#ffff25e6"/>
+
+    <EditText
+        android:id="@+id/edit_fullname"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="Full name"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:inputType="textCapWords"
+        android:textColorHighlight = "#ff7eff15"
+        android:textColorHint = "#ffff25e6"/>
+
+    <EditText
+        android:id="@+id/edit_gender"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="Gender"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:inputType="textCapWords"
+        android:textColorHighlight = "#ff7eff15"
+        android:textColorHint = "#ffff25e6"/>
+    <Button
+        android:id="@+id/btnSaveEdit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="#ea4c88"
+        android:text="Save" />
+    <Button
+        android:id="@+id/btnCancelEdit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="#ea4c88"
+        android:text="Cancel" />
+</LinearLayout>

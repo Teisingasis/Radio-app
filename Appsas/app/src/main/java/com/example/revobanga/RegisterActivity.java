@@ -23,6 +23,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,15 +33,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText Email,Password;
+    EditText Email,Password,Username,Name;
     Button registerButton,loginButton;
     FirebaseAuth firebaseAuth;
+    DatabaseReference userRef;
+    String currentUserID;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         Email =  findViewById(R.id.email);
         Password = (EditText) findViewById(R.id.password);
+        Username=findViewById(R.id.username);
+        Name=findViewById(R.id.RegName);
         registerButton = (Button) findViewById(R.id.btnRegister);
         loginButton = (Button) findViewById(R.id.btnLinkToLoginScreen);
 
@@ -50,7 +56,16 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = Email.getText().toString();
                 String password = Password.getText().toString();
-
+                final String username=Username.getText().toString();
+                final String name=Name.getText().toString();
+                if(TextUtils.isEmpty(username)){
+                    Toast.makeText(getApplicationContext(),"Please fill in the required fields",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(name)){
+                    Toast.makeText(getApplicationContext(),"Please fill in the required fields",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(getApplicationContext(),"Please fill in the required fields",Toast.LENGTH_SHORT).show();
                     return;
@@ -67,11 +82,12 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
+                                    saveInfo(username,name);
                                     startActivity(new Intent(getApplicationContext(),MainActivity.class));
                                     finish();
                                 }
                                 else{
-                                    Toast.makeText(getApplicationContext(),"E-mail or password is wrong",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),"E-mail is wrong",Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -88,6 +104,15 @@ public class RegisterActivity extends AppCompatActivity {
         if(firebaseAuth.getCurrentUser()!=null){
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
         }
+    }
+    public void saveInfo(String username,String name){
+currentUserID=firebaseAuth.getCurrentUser().getUid();
+        userRef= FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
+        HashMap userMap=new HashMap();
+        userMap.put("username",username);
+        userMap.put("fullname",name);
+        userMap.put("Gender","none");
+userRef.updateChildren(userMap);
     }
 }
 
