@@ -9,7 +9,8 @@
     android:paddingTop="10sp"
     android:paddingRight="20dp"
     android:paddingBottom="10dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
     <EditText
         android:id="@+id/login"
@@ -20,8 +21,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
         android:background="@drawable/round_button"
+        android:cursorVisible="true"
         android:drawableLeft="@drawable/ic_login"
+        android:drawablePadding="5dp"
+        android:ems="10"
         android:hint="Username"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
         android:textColor="#F7F6F6"
         android:textColorHighlight="#B2E47F"
         android:textColorHint="#C1ABB4B4"
@@ -37,39 +43,45 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:background="@drawable/round_button"
+        android:cursorVisible="true"
         android:drawableStart="@drawable/ic_password"
         android:drawableLeft="@drawable/ic_password"
+        android:drawablePadding="5dp"
+        android:ems="10"
         android:fadingEdge="horizontal|vertical"
         android:hint="Password"
         android:inputType="textPassword"
+        android:padding="10dp"
         android:textColor="#F7F6F6"
         android:textColorHighlight="#B2E47F"
         android:textColorHint="#C1ABB4B4"
         android:textColorLink="#86D5AC"
-        android:textCursorDrawable="@drawable/cursor"
-        />
+        android:textCursorDrawable="@drawable/cursor" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_height="48dp"
         android:layout_below="@+id/passwd"
-
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
         android:background="@drawable/roundbutton2"
-        android:text="login"
+        android:fontFamily="sans-serif-medium"
+        android:text="Login"
+        android:textAllCaps="true"
         android:textSize="18sp" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="200dp"
-        android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_below="@+id/button"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/roundbutton2"
-        android:text="Register"
+        android:fontFamily="sans-serif-medium"
+        android:text="Sign up"
+        android:textAllCaps="true"
         android:textSize="18sp" />
 
     <ImageView
@@ -78,26 +90,28 @@
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-
         android:layout_marginTop="60dp"
         android:adjustViewBounds="false"
         app:srcCompat="@drawable/final123" />
+
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
-        android:layout_width="300dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="15dp"
-        />
-    <Button
-        android:text="I forgot password"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
+        android:layout_height="50dp"
+        android:layout_below="@id/button2"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp" />
+
+    <Button
         android:id="@+id/remind"
-        android:background="@null"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginBottom="8dp"
-        android:layout_below="@id/sign_in_button"
-        />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passwd"
+        android:layout_marginTop="0.5dp"
+        android:layout_alignRight="@id/passwd"
+        android:background="@android:color/transparent"
+        android:text="Forgot password?"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary" />
 
 </RelativeLayout>
