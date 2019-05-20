@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcheris_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Chat.ChatActivity"></activity>
         <activity android:name=".SettingsActivity"></activity>
         <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".NewPasswordActivity"></activity>

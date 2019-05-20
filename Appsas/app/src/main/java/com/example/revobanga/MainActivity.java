@@ -2,6 +2,7 @@ package com.example.revobanga;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -10,6 +11,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.transition.ChangeTransform;
+import android.util.Log;
 import android.view.MenuItem;
 
 import java.util.HashMap;
@@ -29,8 +32,15 @@ import android.os.AsyncTask;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.revobanga.Chat.ChatActivity;
+import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
@@ -48,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private long backPressedTime;
     FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
+    private static final String TAG = MainActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +100,49 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         };
+
+//        ------------------------
+//                Chat
+//        --------------------------
+
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("message");
+//
+//        myRef.setValue("Hello World!");
+//        myRef.setValue("Aloha!");
+//        //myRef.setValue("Howdy!");
+//
+//        myRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                String value = dataSnapshot.getValue(String.class);
+//                Log.d(TAG, "Value is: " + value);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//                Log.w(TAG, "Failed to read value.", databaseError.toException());
+//            }
+//        });
+
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+//        Chat msg = new Chat("puf", "1234", "Hello FirebaseUI world!");
+//        ref.push().setValue(msg);
+
+//        ref.limitToLast(5).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot Snapshot) {
+//                for (DataSnapshot msgSnapshot: Snapshot.getChildren());{
+//                    Chat msg = msgSnapshot.getValue(Chat.class);
+//                    Log.i("Chat", chat.getName()+": "+chat.getText());
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError firebaseError) {
+//                Log.e("Chat", "The read failed: " + firebaseError.getDetails());
+//            }
+//        });
 
         // --------------------------------------
         // DATABASE
@@ -134,7 +188,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StationsFragment()).commit();
                 break;
             case R.id.nav_chat:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ChatFragment()).commit();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ChatFragment()).commit();
+                startActivity(new Intent(MainActivity.this, ChatActivity.class));
                 break;
             case R.id.nav_favorites:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FavoritesFragment()).commit();
