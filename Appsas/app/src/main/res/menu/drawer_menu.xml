@@ -16,14 +16,22 @@
             android:id="@+id/nav_chat"
             android:icon="@drawable/ic_message_chat"
             android:title="Chat"/>
+        <!--<item-->
+            <!--android:id="@+id/nav_favorites"-->
+            <!--android:icon="@drawable/ic_favorites_star"-->
+            <!--android:title="Favorites"/>-->
+        <!--<item-->
+            <!--android:id="@+id/nav_timetable"-->
+            <!--android:icon="@drawable/ic_time"-->
+            <!--android:title="Timetable"/>-->
         <item
-            android:id="@+id/nav_favorites"
-            android:icon="@drawable/ic_favorites_star"
-            android:title="Favorites"/>
+            android:id="@+id/nav_support"
+            android:icon="@drawable/ic_business_black_24dp"
+            android:title="Support"/>
         <item
-            android:id="@+id/nav_timetable"
-            android:icon="@drawable/ic_time"
-            android:title="Timetable"/>
+            android:id="@+id/nav_facebook"
+            android:icon="@drawable/ic_facebook"
+            android:title="Facebook Page"/>
         <item
             android:id="@+id/logout"
             android:icon="@drawable/ic_profile"

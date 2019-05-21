@@ -2,6 +2,7 @@ package com.example.revobanga;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -149,16 +150,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ChatFragment()).commit();
                 startActivity(new Intent(MainActivity.this, ChatActivity.class));
                 break;
-            case R.id.nav_favorites:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FavoritesFragment()).commit();
-                break;
+//            case R.id.nav_favorites:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FavoritesFragment()).commit();
+//                break;
             case R.id.nav_settings:
               //  getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
                 //startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 break;
-            case R.id.nav_timetable:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TimetableFragment()).commit();
+//            case R.id.nav_timetable:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TimetableFragment()).commit();
+//                break;
+            case R.id.nav_support:
+                Intent supportIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.me/rokjan"));
+                startActivity(supportIntent);
+                break;
+            case R.id.nav_facebook:
+                Intent supportIntent1 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/RevoBanga-2103338803291279/"));
+                startActivity(supportIntent1);
                 break;
             case R.id.logout:
                 firebaseAuth.signOut();
