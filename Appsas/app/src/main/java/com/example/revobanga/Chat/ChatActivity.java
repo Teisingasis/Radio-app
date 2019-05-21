@@ -87,7 +87,6 @@ pressed(v);
 
 
         };
-        //adapter.startListening();
 
         rvMessage.setAdapter(adapter);
 
