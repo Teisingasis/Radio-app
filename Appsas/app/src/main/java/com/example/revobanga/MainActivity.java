@@ -101,48 +101,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         };
 
-//        ------------------------
-//                Chat
-//        --------------------------
-
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("message");
-//
-//        myRef.setValue("Hello World!");
-//        myRef.setValue("Aloha!");
-//        //myRef.setValue("Howdy!");
-//
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                String value = dataSnapshot.getValue(String.class);
-//                Log.d(TAG, "Value is: " + value);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Log.w(TAG, "Failed to read value.", databaseError.toException());
-//            }
-//        });
-
-//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-//        Chat msg = new Chat("puf", "1234", "Hello FirebaseUI world!");
-//        ref.push().setValue(msg);
-
-//        ref.limitToLast(5).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot Snapshot) {
-//                for (DataSnapshot msgSnapshot: Snapshot.getChildren());{
-//                    Chat msg = msgSnapshot.getValue(Chat.class);
-//                    Log.i("Chat", chat.getName()+": "+chat.getText());
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError firebaseError) {
-//                Log.e("Chat", "The read failed: " + firebaseError.getDetails());
-//            }
-//        });
 
         // --------------------------------------
         // DATABASE

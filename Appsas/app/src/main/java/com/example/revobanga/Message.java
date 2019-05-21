@@ -1,25 +1,13 @@
 package com.example.revobanga;
 
 public class Message {
-    private String text; // message body
-    private MemberData memberData; // data of the user that sent this message
-    private boolean belongsToCurrentUser; // is this message sent by us?
+    public String sender;
+    public String message;
+    public Message(){
 
-    public Message(String text, MemberData memberData, boolean belongsToCurrentUser) {
-        this.text = text;
-        this.memberData = memberData;
-        this.belongsToCurrentUser = belongsToCurrentUser;
     }
-
-    public String getText() {
-        return text;
-    }
-
-    public MemberData getMemberData() {
-        return memberData;
-    }
-
-    public boolean isBelongsToCurrentUser() {
-        return belongsToCurrentUser;
+    public Message(String send,String mes){
+        sender=send;
+        message=mes;
     }
 }
