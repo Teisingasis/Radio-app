@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/ic_launcheris_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Chat.ChatActivity"></activity>
-        <activity android:name=".SettingsActivity"></activity>
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".NewPasswordActivity"></activity>
+        <activity android:name=".SettingsActivityN"></activity>
+        <activity android:name=".Chat.ChatActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".NewPasswordActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

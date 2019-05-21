@@ -22,6 +22,7 @@ import android.view.MenuItem;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+            //setContentView(R.layout.fragment_settings);
 
             // load settings fragment
             getFragmentManager().beginTransaction().replace(R.id.fragment_container, new MainPreferenceFragment()).commit();
