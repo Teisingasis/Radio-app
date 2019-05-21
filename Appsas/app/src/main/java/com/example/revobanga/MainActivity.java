@@ -143,6 +143,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
         switch (item.getItemId()) {
+            case R.id.nav_profile:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+                break;
             case R.id.nav_radioStations:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StationsFragment()).commit();
                 break;
