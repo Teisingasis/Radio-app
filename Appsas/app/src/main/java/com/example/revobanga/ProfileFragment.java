@@ -40,29 +40,7 @@ changepassword=view.findViewById(R.id.btnChangePassword);
 firebaseAuth=FirebaseAuth.getInstance();
 currentUserID=firebaseAuth.getCurrentUser().getUid();
 
-profileUserRef= FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
 
-profileUserRef.addValueEventListener(new ValueEventListener() {
-    @Override
-    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-        if(dataSnapshot.exists()){
-
-            String myUserName=dataSnapshot.child("username").getValue().toString();
-            String myName =dataSnapshot.child("fullname").getValue().toString();
-            String mygender=dataSnapshot.child("Gender").getValue().toString();
-
-            username.setText("Username: "+myUserName);
-            fullname.setText("Full name: "+myName);
-            gender.setText("Gender: "+mygender);
-        }
-    }
-
-    @Override
-    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-    }
-});
 
 edit.setOnClickListener(new View.OnClickListener() {
     @Override
