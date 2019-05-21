@@ -4,12 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="#343C3D"
     android:paddingLeft="20dp"
-    android:paddingTop="10sp"
+    android:paddingTop="10dp"
     android:paddingRight="20dp"
     android:paddingBottom="10dp"
     tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:gravity="center_horizontal|center_vertical"
+
     >
 
     <EditText
@@ -19,7 +23,7 @@
         android:layout_height="43dp"
         android:layout_below="@id/imageView3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:background="@android:color/transparent"
         android:cursorVisible="true"
         android:drawableLeft="@drawable/ic_login"
@@ -77,7 +81,7 @@
         android:layout_height="48dp"
         android:layout_below="@+id/passwd"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/roundbutton2"
         android:fontFamily="sans-serif-medium"
 
@@ -100,36 +104,51 @@
         android:textAllCaps="true"
         android:textSize="18sp" />
 
+
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="10dp"
         android:adjustViewBounds="false"
         app:srcCompat="@drawable/final123" />
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginTop="4dp"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="2dp">
+    <!--<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--xmlns:tools="http://schemas.android.com/tools"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="4dp"-->
+        <!--android:layout_marginRight="4dp"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--app:cardCornerRadius="8dp"-->
+        <!--app:cardElevation="2dp">-->
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_below="@id/button2"
+        android:layout_below="@id/Or"
         android:layout_centerInParent="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         />
-        android:layout_marginTop="15dp"
-        app:buttonSize="icon_only"/>
-</android.support.v7.widget.CardView>
+
+        <!--<Button-->
+            <!--android:id="@+id/sign_in_button"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@id/passwd"-->
+            <!--android:layout_marginTop="0.5dp"-->
+            <!--android:layout_alignRight="@id/passwd"-->
+            <!--android:background="@android:color/transparent"-->
+            <!--android:text="Forgot password?"-->
+            <!--android:textAllCaps="false"-->
+            <!--android:textColor="@color/colorPrimaryA" />-->
+
+        <!--android:layout_marginTop="15dp"-->
+        <!--app:buttonSize="icon_only"/>-->
+<!--</android.support.v7.widget.CardView>-->
     <Button
         android:id="@+id/remind"
         android:layout_width="wrap_content"
@@ -142,6 +161,36 @@
         android:textAllCaps="false"
         android:textColor="@color/colorPrimaryA" />
 
+    <TextView
+        android:id="@+id/Or"
+        android:layout_below="@id/button2"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="Or"
+        android:textColor="#C1ABB4B4"/>
 
+    <View
+        android:layout_below="@id/button2"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="40dp"
+        android:layout_toLeftOf="@id/Or"
+        android:background="#C1ABB4B4"
+        />
+
+    <View
+        android:layout_below="@id/button2"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginRight="40dp"
+        android:layout_toRightOf="@id/Or"
+        android:background="#C1ABB4B4"
+        />
 
 </RelativeLayout>

@@ -33,8 +33,13 @@
         android:layout_height="100dp"
         android:background="@drawable/roundbutton2"
         android:text="PLAY STREAM 1"
+
+        android:textColor="#2B2C2C"
+        android:textStyle="bold"
         android:textSize="24sp"
         android:fontFamily="sans-serif-medium"
+        android:padding="15dp"
+        android:drawableRight="@drawable/play"
 
         />
 
@@ -45,11 +50,12 @@
         android:layout_height="100dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/roundbutton2"
-        android:fontFamily="sans-serif-medium"
         android:drawableRight="@drawable/play"
+        android:fontFamily="sans-serif-medium"
         android:padding="15dp"
         android:text="PLAY STREAM 2"
-        android:textColor="@color/colorBackground"
-        android:textSize="24sp" />
+        android:textColor="#2B2C2C"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
 </LinearLayout>
