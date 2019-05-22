@@ -13,10 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-import com.example.revobanga.Message;
 import com.example.revobanga.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -33,7 +33,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ChatActivity  extends AppCompatActivity {
-
+    private static final int SENT = 0;//ct
+    private static final int RECEIVED = 1;//et
     Button sendButton;
     EditText messageArea;
     RecyclerView rvMessage;
@@ -75,22 +76,44 @@ pressed(v);
             @NonNull
             @Override
             public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_row_chat, viewGroup, false);
-                return new ChatViewHolder(view);
+//                switch (i) {
+//                    case SENT:
+//                        View userType1 = LayoutInflater.from(viewGroup.getContext())
+//                                .inflate(R.layout.my_message, viewGroup, false);
+//                        return new ChatViewHolder(userType1);
+//                    case RECEIVED:
+                        View userType2 = LayoutInflater.from(viewGroup.getContext())
+                                .inflate(R.layout.item_row_chat, viewGroup, false);
+                        return new ChatViewHolder(userType2);
+              //  }
+             //   return null;
             }
 
             @Override
             protected void onBindViewHolder(@NonNull ChatViewHolder holder, int position, @NonNull Message model) {
-                holder.tvMessage.setText(model.message);
-                holder.tvEmail.setText(model.sender);
-            }
+                holder.messageText.setText(model.message);
+                holder.nameText.setText(model.sender);
 
+                if (model.sender.equals(Username)){
+                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) holder.messageText.getLayoutParams();
+                    params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,RelativeLayout.TRUE);
+                    //  params.addRule(RelativeLayout.LEFT_OF, R.id.id_to_be_left_of);
+
+                    holder.messageText.setLayoutParams(params); //causes layout update
+                }
+            }
+//            @Override
+//            public int getItemViewType(int position) {
+//                Message msg = getItem(position);
+//
+//            }
 
         };
 
         rvMessage.setAdapter(adapter);
 
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -152,16 +175,16 @@ public void GetUser(){
 }
     public static class ChatViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvEmail, tvMessage;
+        TextView messageText,timeText,nameText;
+        String type;
 
         public ChatViewHolder(View itemView) {
             super(itemView);
-
-            tvEmail = (TextView) itemView.findViewById(R.id.tv_sender);
-            tvMessage = (TextView) itemView.findViewById(R.id.tv_message);
+            messageText = (TextView) itemView.findViewById(R.id.tv_message);
+          //  timeText = (TextView) itemView.findViewById(R.id.text_message_time);
+            nameText = (TextView) itemView.findViewById(R.id.tv_sender);
         }
     }
-
 
 
         }
