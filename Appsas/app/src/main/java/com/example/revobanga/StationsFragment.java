@@ -21,7 +21,6 @@ public class StationsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_radio_stations, container, false);
         firstStation(view);
         secondStation(view);
-
         return view;
     }
 
@@ -31,7 +30,7 @@ public class StationsFragment extends Fragment {
         pirmStotis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                MainActivity.screen = "station1";
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, new Station1Fragment(),"station1").commit();
 
               // currentsong.setText("First Station");
@@ -47,6 +46,7 @@ public class StationsFragment extends Fragment {
         antrStotis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MainActivity.screen = "station2";
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, new Station2Fragment(),"station2").commit();
             }
         });
