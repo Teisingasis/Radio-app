@@ -29,17 +29,21 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     Button loginButton, registerButton, newPassButton;
     private static final int RC_SIGN_IN = 9001;
     private SignInButton signInButton;
+//    private Button signInButton;
     FirebaseAuth firebaseAuth;
     GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login);
         loginEmail = (EditText) findViewById(R.id.login);
         loginPassword = (EditText) findViewById(R.id.passwd);
         loginButton = (Button) findViewById(R.id.button);
         signInButton = (SignInButton) findViewById(R.id.sign_in_button);
+        signInButton.setSize(1);
+//        signInButton =  findViewById(R.id.sign_in_button);
         newPassButton = (Button) findViewById(R.id.remind);
         firebaseAuth = FirebaseAuth.getInstance();
         if (firebaseAuth.getCurrentUser() != null) {

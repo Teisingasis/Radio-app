@@ -32,10 +32,16 @@
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:background="@drawable/roundbutton2"
-        android:text="STREAM 1"
-        android:textSize="24sp"
+        android:text="PLAY STREAM 1"
+
+        android:textColor="#2B2C2C"
         android:textStyle="bold"
-        android:typeface="monospace" />
+        android:textSize="24sp"
+        android:fontFamily="sans-serif-medium"
+        android:padding="15dp"
+        android:drawableRight="@drawable/play"
+
+        />
 
 
     <Button
@@ -44,7 +50,11 @@
         android:layout_height="100dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/roundbutton2"
-        android:text="STREAM 2"
+        android:drawableRight="@drawable/play"
+        android:fontFamily="sans-serif-medium"
+        android:padding="15dp"
+        android:text="PLAY STREAM 2"
+        android:textColor="#2B2C2C"
         android:textSize="24sp"
         android:textStyle="bold" />
 
