@@ -34,6 +34,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.revobanga.Chat.ChatActivity;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -59,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private long backPressedTime;
     public static String screen = "stations";
     FirebaseAuth firebaseAuth;
+    GoogleApiClient mGoogleApiClient;
     private FirebaseAuth.AuthStateListener authStateListener;
     private static final String TAG = MainActivity.class.getSimpleName();
     @Override
@@ -101,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         };
+
 
 
         // --------------------------------------
@@ -175,9 +184,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(supportIntent1);
                 break;
             case R.id.logout:
-                firebaseAuth.signOut();
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                finish();
+
+                Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                        new ResultCallback<Status>() {
+                            @Override
+                            public void onResult(Status status) {
+                                // ...
+                                Toast.makeText(getApplicationContext(),"Logged Out",Toast.LENGTH_SHORT).show();
+                                Intent i=new Intent(MainActivity.this,LoginActivity.class);
+                                startActivity(i);
+                            }
+                        });
+                    firebaseAuth.signOut();
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                Toast.makeText(getApplicationContext(),"Logged Out",Toast.LENGTH_SHORT).show();
+                    finish();
                 break;
         }
 
@@ -217,6 +238,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onStart() {
         super.onStart();
         firebaseAuth.addAuthStateListener(authStateListener);
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+        mGoogleApiClient.connect();
     }
 
     @Override
