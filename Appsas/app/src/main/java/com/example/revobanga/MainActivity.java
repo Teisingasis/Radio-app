@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private SQLiteHandler db;
     private SessionManager session;
     private long backPressedTime;
+    public static String screen = "stations";
     FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -81,7 +82,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StationsFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_radioStations);
         }
-
 
         player = new Player(mediaPlayer, getString(R.string.link1),1);
         fragment = (Station1Fragment) getSupportFragmentManager().findFragmentByTag("station1");
@@ -144,9 +144,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
         switch (item.getItemId()) {
             case R.id.nav_profile:
+                screen = "profile";
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
                 break;
             case R.id.nav_radioStations:
+                screen = "stations";
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StationsFragment()).commit();
                 break;
             case R.id.nav_chat:
@@ -188,18 +190,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            if (backPressedTime + 2000 > System.currentTimeMillis()){
-                //super.onBackPressed();
 
-                moveTaskToBack(true);
-                android.os.Process.killProcess(android.os.Process.myPid());
-                System.exit(1);
+            if ( screen == "stations" ){
+                //stationsFrag
+                if (backPressedTime + 2000 > System.currentTimeMillis()){
+                    //super.onBackPressed();
+
+                    moveTaskToBack(true);
+                    android.os.Process.killProcess(android.os.Process.myPid());
+                    System.exit(1);
+                }
+                else {
+                    Toast.makeText(getBaseContext(), "Double press to exit", Toast.LENGTH_SHORT).show();
+                }
+
+                backPressedTime = System.currentTimeMillis();
             }
             else {
-                Toast.makeText(getBaseContext(), "Double press to exit", Toast.LENGTH_SHORT).show();
+                screen = "stations";
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StationsFragment()).commit();
             }
 
-            backPressedTime = System.currentTimeMillis();
         }
     }
     @Override
