@@ -91,16 +91,40 @@ pressed(v);
 
             @Override
             protected void onBindViewHolder(@NonNull ChatViewHolder holder, int position, @NonNull Message model) {
-                holder.messageText.setText(model.message);
-                holder.nameText.setText(model.sender);
 
                 if (model.sender.equals(Username)){
                     RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) holder.messageText.getLayoutParams();
-                    params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,RelativeLayout.TRUE);
+                    params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+                    params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 0);
                     //  params.addRule(RelativeLayout.LEFT_OF, R.id.id_to_be_left_of);
-
+                    params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
+                    params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
                     holder.messageText.setLayoutParams(params); //causes layout update
+                    params = (RelativeLayout.LayoutParams) holder.nameText.getLayoutParams();
+                    params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+                    params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 0);
+                    //  params.addRule(RelativeLayout.LEFT_OF, R.id.id_to_be_left_of);
+                    params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
+                    params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
+                    holder.nameText.setLayoutParams(params);
                 }
+                else {
+                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) holder.messageText.getLayoutParams();
+                    params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+                    params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 0);
+                    params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
+                    params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
+                    holder.messageText.setLayoutParams(params);
+                    params = (RelativeLayout.LayoutParams) holder.nameText.getLayoutParams();
+                    params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+                    params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 0);
+                    params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
+                    params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
+                    holder.nameText.setLayoutParams(params);
+                }
+                holder.messageText.setText(model.message);
+                holder.nameText.setText(model.sender);
+
             }
 //            @Override
 //            public int getItemViewType(int position) {

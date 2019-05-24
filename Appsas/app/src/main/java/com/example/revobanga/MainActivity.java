@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FirebaseAuth firebaseAuth;
     GoogleApiClient mGoogleApiClient;
     private FirebaseAuth.AuthStateListener authStateListener;
+    DatabaseReference usRef;
+    String username,currentUserID;
     private static final String TAG = MainActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,8 +109,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                     finish();
                 }
+
             }
         };
+        currentUserID=firebaseAuth.getCurrentUser().getUid();
+        GetUser();
 
 
 
@@ -161,8 +166,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StationsFragment()).commit();
                 break;
             case R.id.nav_chat:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ChatFragment()).commit();
-                startActivity(new Intent(MainActivity.this, ChatActivity.class));
+                if(username.isEmpty()) {
+                    Toast.makeText(getApplicationContext(),"You have to have username to enter",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                       startActivity(new Intent(MainActivity.this, ChatActivity.class));
+                }
                 break;
 //            case R.id.nav_favorites:
 //                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FavoritesFragment()).commit();
@@ -253,5 +262,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(authStateListener!=null){
             firebaseAuth.removeAuthStateListener(authStateListener);
         }
+    }
+    public void GetUser(){
+
+        usRef= FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
+
+        usRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if(dataSnapshot.exists()){
+
+                    String myUserName=dataSnapshot.child("username").getValue().toString();
+                    username=myUserName;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

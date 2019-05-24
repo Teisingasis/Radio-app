@@ -43,12 +43,12 @@ public class ChangePassword extends AppCompatActivity {
                 user = FirebaseAuth.getInstance().getCurrentUser();
 pass=newPass.getText().toString();
                 cur=current.getText().toString();
-                if(TextUtils.isEmpty(pass)){
-                    Toast.makeText(getApplicationContext(),"Please fill in the required fields",Toast.LENGTH_SHORT).show();
+                if(TextUtils.isEmpty(cur)){
+                    Toast.makeText(getApplicationContext(),"Please enter the current password",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(TextUtils.isEmpty(cur)){
-                    Toast.makeText(getApplicationContext(),"Please fill in the required fields",Toast.LENGTH_SHORT).show();
+                if(TextUtils.isEmpty(pass)){
+                    Toast.makeText(getApplicationContext(),"Please enter new password",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(pass.length()<6){
