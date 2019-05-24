@@ -73,7 +73,7 @@ edit.setOnClickListener(new View.OnClickListener() {
 changepassword.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(getActivity(),NewPasswordActivity.class));
+        startActivity(new Intent(getActivity(),ChangePassword.class));
     }
 });
 
