@@ -29,7 +29,15 @@ android:singleLine="true"
 android:inputType="textCapWords"
     android:textColorHighlight = "#ff7eff15"
     android:textColor="#F0F5F5"
-    android:textColorHint = "@color/LightGreyText"/>
+    android:textColorHint = "@color/LightGreyText"
+    />
+
+    <!--<View-->
+        <!--android:layout_width="350dp"-->
+        <!--android:layout_height="2dp"-->
+        <!--android:layout_marginTop="@id/username"-->
+        <!--android:background="@color/colorButtonA"-->
+        <!--/>-->
 
 <EditText
 android:id="@+id/email"
