@@ -19,7 +19,6 @@ public class Station1Fragment extends Fragment {
     static Button play;
     View view;
     static TextView info;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -30,6 +29,7 @@ public class Station1Fragment extends Fragment {
         playPause();
               TextView scrollingText = view.findViewById(R.id.stations1playing);
       scrollingText.setSelected(true);
+
         return view;
     }
 

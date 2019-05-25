@@ -3,6 +3,7 @@
     package="com.example.revobanga">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
 
     <application
         android:allowBackup="true"
@@ -39,6 +40,8 @@
                 <action android:name="android.intent.action.Home" />
             </intent-filter>
         </activity>
+
+        <service android:name=".MediaPlayerService" />
     </application>
 
 </manifest>

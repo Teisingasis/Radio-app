@@ -124,7 +124,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         currentUserID=firebaseAuth.getCurrentUser().getUid();
         GetUser();
 
-
+        Intent intent = new Intent( getApplicationContext(), MediaPlayerService.class );
+        intent.setAction( MediaPlayerService.ACTION_PAUSE );
+        startService( intent );
 
         // --------------------------------------
         // DATABASE
