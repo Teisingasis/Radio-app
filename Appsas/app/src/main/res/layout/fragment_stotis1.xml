@@ -53,16 +53,17 @@
         android:gravity="center_horizontal|center_vertical"
         android:textStyle="bold"
         android:text="@string/isPlaying"
+        />
 
 
-        android:singleLine="true"
+      <!--  android:singleLine="true"
         android:scrollHorizontally="true"
         android:ellipsize="marquee"
         android:marqueeRepeatLimit="marquee_forever"
         android:focusable="true"
-        android:focusableInTouchMode="true"
+        android:focusableInTouchMode="true"-->
 
 
-        />
+        <!--/>-->
 
 </RelativeLayout>
