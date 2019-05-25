@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import java.util.HashMap;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View;
 import android.content.Intent;
@@ -149,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Button prof=findViewById(R.id.profile);
+       ImageView prof=findViewById(R.id.profile);
         prof.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
