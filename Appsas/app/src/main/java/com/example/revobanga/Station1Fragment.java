@@ -28,6 +28,8 @@ public class Station1Fragment extends Fragment {
         MainActivity.fragment= (Station1Fragment) getFragmentManager().findFragmentByTag("station1");
         state(player.state);
         playPause();
+              TextView scrollingText = view.findViewById(R.id.stations1playing);
+      scrollingText.setSelected(true);
         return view;
     }
 

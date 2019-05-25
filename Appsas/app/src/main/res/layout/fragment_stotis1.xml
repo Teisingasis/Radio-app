@@ -39,7 +39,7 @@
         android:textColor="#F7F6F6"/>
 
     <TextView
-        android:id="@+id/station1playing"
+        android:id="@+id/stations1playing"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="50dp"
@@ -52,7 +52,7 @@
         android:textAlignment="gravity"
         android:gravity="center_horizontal|center_vertical"
         android:textStyle="bold"
-        android:text="@string/isPlaying"
+        android:text="@string/is_Playing"
 
 
         android:singleLine="true"
