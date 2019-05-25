@@ -18,6 +18,9 @@
                 android:endColor="#0AB388"
                 android:type="linear" />
 
+            <stroke
+                android:width="5dp"
+                android:color="@color/colorPrimaryA"/>
 
         </shape>
     </item>

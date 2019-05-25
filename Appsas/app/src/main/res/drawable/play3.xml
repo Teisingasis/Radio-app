@@ -4,5 +4,5 @@
     <item android:drawable="@drawable/playtrue"
         android:gravity="center"
         android:width="100dp"
-        android:height="100dp"  />
+        android:height="100dp" />
 </layer-list>

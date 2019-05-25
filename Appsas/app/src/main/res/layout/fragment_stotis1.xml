@@ -33,29 +33,28 @@
         android:id="@+id/ready"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="28sp"
         android:layout_centerInParent="true"
         android:layout_below="@id/button5"
+        android:layout_marginTop="10dp"
         android:textColor="#F7F6F6"/>
 
     <TextView
         android:id="@+id/stations1playing"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/isplayingview"
-
+        android:layout_marginTop="110dp"
         android:fontFamily="sans-serif-medium"
         android:textAllCaps="false"
-        android:textColor="@color/colorPrimaryA"
-        android:textSize="36sp"
+        android:textColor="#DAE5E9E7"
+        android:textSize="30sp"
         android:textAlignment="gravity"
         android:gravity="center_horizontal|center_vertical"
-        android:textStyle="bold"
+        android:textStyle="normal"
 
         android:text="@string/is_Playing"/>
 
-
+        <!--android:background="@drawable/isplayingview"-->
       <!--  android:singleLine="true"
         android:scrollHorizontally="true"
         android:ellipsize="marquee"
@@ -64,6 +63,6 @@
         android:focusableInTouchMode="true"-->
 
 
-        <!--/>-->
+
 
 </RelativeLayout>

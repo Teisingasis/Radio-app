@@ -12,6 +12,9 @@
                 android:startColor="#1A6655"
                 android:endColor="#0AB388"
                 android:type="linear" />
-
+            <stroke
+                android:color="@color/colorPrimaryA"
+                android:width="5dp"
+            />
 
         </shape>
