@@ -7,7 +7,7 @@
   <group android:translateX="-1.2"
       android:translateY="-1.2">
       <path
-          android:fillColor="#FF000000"
+          android:fillColor="#2D3030"
           android:pathData="M8,5v14l11,-7z"/>
   </group>
 </vector>

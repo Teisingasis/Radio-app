@@ -7,5 +7,6 @@
     <color name="colorButtonA">#2D3030</color>
     <color name="colorBackground">#343C3D</color>
     <color name="colorButtonGradient1">#1A6655</color>
+    <color name="LightGreyText">#C1ABB4B4</color>
 
 </resources>

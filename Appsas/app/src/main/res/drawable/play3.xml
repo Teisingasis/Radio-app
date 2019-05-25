@@ -3,6 +3,6 @@
     <item android:drawable="@drawable/playstopbutton"/>
     <item android:drawable="@drawable/playtrue"
         android:gravity="center"
-        android:width="80dp"
-        android:height="80dp"  />
+        android:width="100dp"
+        android:height="100dp"  />
 </layer-list>

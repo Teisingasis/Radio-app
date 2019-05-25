@@ -34,7 +34,7 @@
         android:background="@drawable/roundbutton2"
         android:text="PLAY STREAM 1"
 
-        android:textColor="#2B2C2C"
+        android:textColor="@color/colorButtonA"
         android:textStyle="bold"
         android:textSize="24sp"
         android:fontFamily="sans-serif-medium"
@@ -54,7 +54,7 @@
         android:fontFamily="sans-serif-medium"
         android:padding="15dp"
         android:text="PLAY STREAM 2"
-        android:textColor="#2B2C2C"
+        android:textColor="@color/colorButtonA"
         android:textSize="24sp"
         android:textStyle="bold" />
 

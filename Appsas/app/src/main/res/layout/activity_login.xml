@@ -27,9 +27,10 @@
         android:background="@android:color/transparent"
         android:cursorVisible="true"
         android:drawableLeft="@drawable/ic_login"
+        android:drawableStart="@drawable/ic_login"
         android:drawablePadding="5dp"
         android:ems="10"
-        android:hint="Username"
+        android:hint="Email"
         android:inputType="textEmailAddress"
         android:padding="10dp"
         android:textColor="#F7F6F6"
@@ -165,7 +166,7 @@
     <TextView
         android:id="@+id/Or"
         android:layout_below="@id/button2"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -176,7 +177,7 @@
 
     <View
         android:layout_below="@id/button2"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginLeft="40dp"
@@ -186,7 +187,7 @@
 
     <View
         android:layout_below="@id/button2"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginRight="40dp"

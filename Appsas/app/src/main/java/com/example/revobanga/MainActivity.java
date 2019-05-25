@@ -16,6 +16,11 @@ import android.transition.ChangeTransform;
 import android.util.Log;
 import android.view.MenuItem;
 
+import	android.text.TextUtils;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
+
 import java.util.HashMap;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -62,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static Station2Fragment fragment2;
     private TextView txtName;
     private TextView txtEmail;
+
     private SQLiteHandler db;
     private SessionManager session;
     private long backPressedTime;
@@ -72,10 +78,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DatabaseReference usRef;
     String username,currentUserID;
     private static final String TAG = MainActivity.class.getSimpleName();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//      TextView scrollingText = findViewById(R.id.station1playing);
+//      scrollingText.setSelected(true);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
