@@ -11,6 +11,7 @@
     <color name="colorButtonGradient3">#27B081</color>
     <color name="darkgrey">#222627</color>
 
-    <color name="LightGreyText">#C1ABB4B4</color>
+    <color name="AlmostWhite">#DADFDF</color>
+    <color name="LightGreyText">#ABB4B4</color>
 
 </resources>

@@ -6,25 +6,33 @@
     android:background="#222627"
     android:gravity="bottom"
     android:padding="16dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
     android:paddingTop="10dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
         android:id="@+id/profile"
-        android:layout_marginTop="10dp"
+        android:paddingTop="10dp"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@mipmap/ic_launcheris_round" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:text="Sonas"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        android:fontFamily="sans-serif"
+        android:paddingTop="3dp"
+        android:text="@string/app_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/LightGreyText"
+        android:textSize="14dp"
+        android:layout_gravity="left"
+        android:gravity="center"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dar viena eilute"/>
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Dar viena eilute"/>-->
 </LinearLayout>

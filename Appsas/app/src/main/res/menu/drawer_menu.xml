@@ -11,15 +11,17 @@
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_mode_edit_black_24dp"
-            android:title="Profile"/>
-        <item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_settings"
-            android:title="Settings"/>
+            android:title="My profile"/>
+
         <item
             android:id="@+id/nav_chat"
             android:icon="@drawable/ic_message_chat"
             android:title="Chat"/>
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings"
+            android:title="Settings"/>
         <!--<item-->
             <!--android:id="@+id/nav_favorites"-->
             <!--android:icon="@drawable/ic_favorites_star"-->
@@ -30,8 +32,8 @@
             <!--android:title="Timetable"/>-->
         <item
             android:id="@+id/nav_support"
-            android:icon="@drawable/ic_attach_money_black_24dp"
-            android:title="Support"/>
+            android:icon="@drawable/ic_heart"
+            android:title="Support Us"/>
         <item
             android:id="@+id/nav_facebook"
             android:icon="@drawable/ic_facebook"
