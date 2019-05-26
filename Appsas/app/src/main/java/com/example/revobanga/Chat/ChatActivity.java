@@ -4,6 +4,8 @@ package com.example.revobanga.Chat;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.percent.PercentLayoutHelper;
+import android.support.percent.PercentRelativeLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -33,7 +35,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,6 +55,7 @@ public class ChatActivity  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_chatas);
+
         layoutManager.setStackFromEnd(true);
         layoutManager.setSmoothScrollbarEnabled(true);
 
@@ -85,17 +87,9 @@ pressed(v);
             @NonNull
             @Override
             public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-//                switch (i) {
-//                    case SENT:
-//                        View userType1 = LayoutInflater.from(viewGroup.getContext())
-//                                .inflate(R.layout.my_message, viewGroup, false);
-//                        return new ChatViewHolder(userType1);
-//                    case RECEIVED:
                         View userType2 = LayoutInflater.from(viewGroup.getContext())
                                 .inflate(R.layout.item_row_chat, viewGroup, false);
                         return new ChatViewHolder(userType2);
-              //  }
-             //   return null;
             }
 
             @Override
@@ -110,6 +104,11 @@ pressed(v);
                     params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
                     holder.messageText.setLayoutParams(params); //causes layout update
                     holder.messageText.setBackgroundResource(R.drawable.chatoutgoing);
+                    PercentRelativeLayout.LayoutParams p= (PercentRelativeLayout.LayoutParams) holder.messageText.getLayoutParams();
+                    PercentLayoutHelper.PercentLayoutInfo info = p.getPercentLayoutInfo();
+                    info.leftMarginPercent=35*0.01f;
+                    info.rightMarginPercent=0;
+                    holder.messageText.setLayoutParams(p);
 
                     // sender
                     params = (RelativeLayout.LayoutParams) holder.nameText.getLayoutParams();
@@ -122,8 +121,8 @@ pressed(v);
 
                     // time
                     params = (RelativeLayout.LayoutParams) holder.timeText.getLayoutParams();
-                      params.addRule(RelativeLayout.LEFT_OF, R.id.tv_message);
-                      params.addRule(RelativeLayout.RIGHT_OF,0);
+                      params.addRule(RelativeLayout.ALIGN_RIGHT, R.id.tv_message);
+                      params.addRule(RelativeLayout.ALIGN_LEFT,0);
                     params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
                     params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
                     holder.timeText.setLayoutParams(params);
@@ -137,6 +136,11 @@ pressed(v);
                     params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
                     holder.messageText.setLayoutParams(params);
                     holder.messageText.setBackgroundResource(R.drawable.chatincoming);
+                    PercentRelativeLayout.LayoutParams p= (PercentRelativeLayout.LayoutParams) holder.messageText.getLayoutParams();
+                    PercentLayoutHelper.PercentLayoutInfo info = p.getPercentLayoutInfo();
+                    info.rightMarginPercent=35*0.01f;
+                    info.leftMarginPercent=0;
+                    holder.messageText.setLayoutParams(p);
 
                     //sender
                     params = (RelativeLayout.LayoutParams) holder.nameText.getLayoutParams();
@@ -148,8 +152,8 @@ pressed(v);
 
                     //time
                     params = (RelativeLayout.LayoutParams) holder.timeText.getLayoutParams();
-                    params.addRule(RelativeLayout.RIGHT_OF, R.id.tv_message);
-                    params.addRule(RelativeLayout.LEFT_OF,0);
+                    params.addRule(RelativeLayout.ALIGN_LEFT, R.id.tv_message);
+                    params.addRule(RelativeLayout.ALIGN_RIGHT,0);
                     params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
                     params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
                     holder.timeText.setLayoutParams(params);
