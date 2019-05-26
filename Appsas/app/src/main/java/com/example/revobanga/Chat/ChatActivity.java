@@ -1,6 +1,7 @@
 package com.example.revobanga.Chat;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -43,15 +45,19 @@ public class ChatActivity  extends AppCompatActivity {
     private DatabaseReference mFirebaseDatabase;
     DatabaseReference usRef;
     FirebaseRecyclerAdapter adapter;
+    LinearLayoutManager layoutManager=new LinearLayoutManager(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_chatas);
+        layoutManager.setStackFromEnd(true);
+        layoutManager.setSmoothScrollbarEnabled(true);
 
         rvMessage = (RecyclerView) findViewById(R.id.rv_chat);
         rvMessage.setHasFixedSize(true);
-        rvMessage.setLayoutManager(new LinearLayoutManager(this));
+
+        rvMessage.setLayoutManager(layoutManager);
         sendButton = (Button) findViewById(R.id.btn);
         messageArea = (EditText) findViewById(R.id.write);
 ;
@@ -135,9 +141,25 @@ pressed(v);
         };
 
         rvMessage.setAdapter(adapter);
-
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                rvMessage.smoothScrollToPosition(  adapter.getItemCount());
+            }
+        });
+        messageArea.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
     }
-
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
     @Override
     protected void onStart() {
         super.onStart();

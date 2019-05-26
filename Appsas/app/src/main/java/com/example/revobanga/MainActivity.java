@@ -177,11 +177,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StationsFragment()).commit();
                 break;
             case R.id.nav_chat:
-                if(username.isEmpty()) {
-                    Toast.makeText(getApplicationContext(),"You have to have username to enter",Toast.LENGTH_SHORT).show();
+                if(username != null && !username.isEmpty()) {
+                    startActivity(new Intent(MainActivity.this, ChatActivity.class));
                 }
                 else {
-                       startActivity(new Intent(MainActivity.this, ChatActivity.class));
+                    Toast.makeText(getApplicationContext(),"You have to have username to enter",Toast.LENGTH_SHORT).show();
                 }
                 break;
 //            case R.id.nav_favorites:
@@ -213,12 +213,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 Toast.makeText(getApplicationContext(),"Logged Out",Toast.LENGTH_SHORT).show();
                                 Intent i=new Intent(MainActivity.this,LoginActivity.class);
                                 startActivity(i);
+                                Intent myService = new Intent(MainActivity.this, MediaPlayerService.class);
+                                stopService(myService);
+                                if(player.mediaPlayer.isPlaying()){
+                                    player.mediaPlayer.stop();
+                                    player.mediaPlayer.release();
+                                }else if(player2.mediaPlayer.isPlaying()){
+                                    player2.mediaPlayer.stop();
+                                    player2.mediaPlayer.release();
+                                }
+                                finish();
                             }
                         });
                     firebaseAuth.signOut();
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 Toast.makeText(getApplicationContext(),"Logged Out",Toast.LENGTH_SHORT).show();
-                    finish();
+                Intent myService = new Intent(MainActivity.this, MediaPlayerService.class);
+                stopService(myService);
+                if(player.mediaPlayer.isPlaying()){
+                    player.mediaPlayer.stop();
+                    player.mediaPlayer.release();
+                }
+                else if(player2.mediaPlayer.isPlaying()){
+                    player2.mediaPlayer.stop();
+                    player2.mediaPlayer.release();
+                }
+                finish();
                 break;
         }
 
