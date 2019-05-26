@@ -177,11 +177,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StationsFragment()).commit();
                 break;
             case R.id.nav_chat:
-                if(username.isEmpty()) {
-                    Toast.makeText(getApplicationContext(),"You have to have username to enter",Toast.LENGTH_SHORT).show();
+                if(username != null && !username.isEmpty()) {
+                    startActivity(new Intent(MainActivity.this, ChatActivity.class));
                 }
                 else {
-                       startActivity(new Intent(MainActivity.this, ChatActivity.class));
+                    Toast.makeText(getApplicationContext(),"You have to have username to enter",Toast.LENGTH_SHORT).show();
                 }
                 break;
 //            case R.id.nav_favorites:
