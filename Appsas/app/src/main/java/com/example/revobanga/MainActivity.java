@@ -210,6 +210,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.logout:
 
+                if (username == null /*&& username.isEmpty()*/){
+                    final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    user.delete();
+
+                }
+
                 Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
                         new ResultCallback<Status>() {
                             @Override
@@ -261,6 +267,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //stationsFrag
                 if (backPressedTime + 2000 > System.currentTimeMillis()){
                     //super.onBackPressed();
+                    if (username == null /*&& username.isEmpty()*/){
+                        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        firebaseAuth.signOut();
+                        user.delete();
+
+                    }
 
                     moveTaskToBack(true);
                     android.os.Process.killProcess(android.os.Process.myPid());
