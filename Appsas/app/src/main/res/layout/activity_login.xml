@@ -4,16 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="@color/colorBackground"
-
     android:paddingLeft="20dp"
     android:paddingTop="10dp"
     android:paddingRight="20dp"
     android:paddingBottom="10dp"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:gravity="center_horizontal|center_vertical"
+    android:gravity="center_vertical"
 
     >
     <ImageView
@@ -22,7 +20,7 @@
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         app:srcCompat="@drawable/final123" />
 
     <EditText
@@ -31,8 +29,8 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView3"
+
         android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:background="@color/fui_transparent"
         android:cursorVisible="true"
@@ -63,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/login"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:background="@android:color/transparent"
         android:cursorVisible="true"
         android:drawableStart="@drawable/ic_password"
@@ -130,10 +128,11 @@
         <!--app:cardElevation="2dp">-->
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_below="@id/Or"
-        android:layout_centerInParent="true"
+        android:layout_alignRight="@id/line1"
+        android:layout_toRightOf="@id/Or"
         android:layout_marginTop="10dp"
         />
 
@@ -210,8 +209,20 @@
         android:text="Remember me"
         android:fontFamily="sans-serif-medium"
         android:theme="@style/checkBoxStyle"
-
         android:textColor="@color/colorButtonA"/>
+
+
+    <Button
+        android:id="@+id/guest"
+        android:layout_below="@id/Or"
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:layout_alignLeft="@id/line1"
+        android:layout_toLeftOf="@id/Or"
+        android:layout_marginTop="13.5dp"
+        android:background="@drawable/guest"
+        android:textColor="@color/colorButtonA"
+        android:text="Sign in as Guest" />
 
 
 </RelativeLayout>
