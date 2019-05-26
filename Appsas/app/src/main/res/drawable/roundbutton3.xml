@@ -11,7 +11,7 @@
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="50dp"/>
-            <solid android:color="#1E2424"/>
+            <solid android:color="@color/colorButtonA"/>
 
 
         </shape>

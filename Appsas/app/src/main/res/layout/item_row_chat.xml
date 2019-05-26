@@ -7,6 +7,7 @@
     android:layout_marginTop="20dp"
     android:layout_marginRight="10dp"
     android:layout_marginBottom="10dp"
+    android:background="#fff"
     >
 
     <TextView
@@ -14,7 +15,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/tv_sender"
         android:text="Sender"
-        android:textSize="13sp"
+        android:textSize="12sp"
         android:layout_marginBottom="2dp"
 
         />
@@ -23,22 +24,23 @@
         android:layout_height="wrap_content"
         android:id="@+id/tv_message"
         android:text="Message"
-        android:textSize="17sp"
-
+        android:textColor="@color/darkgrey"
+        android:textSize="16sp"
+android:background="@color/fui_transparent"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:paddingBottom="5dp"
         android:paddingTop="5dp"
         android:layout_below="@id/tv_sender"
-        android:layout_marginBottom="0dp"/>
+        android:layout_marginBottom="3dp"/>
     <TextView
         android:id="@+id/text_message_time"
         android:text="11:40"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
+        android:textSize="11sp"
         android:layout_marginLeft="7sp"
         android:layout_marginRight="7sp"
-android:layout_alignBottom="@id/tv_message"
+        android:layout_alignBottom="@id/tv_message"
         />
 </RelativeLayout>

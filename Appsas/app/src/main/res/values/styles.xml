@@ -3,11 +3,21 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimaryA</item>
+        <item name="colorPrimaryDark">@color/colorButtonA</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="AppTheme.PreferenceTheme" parent="AppTheme">
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+    </style>
+    <!-- ToolBar -->
+    <style name="ToolBarTheme.ToolBarStyle"    parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/AlmostWhite</item>
+        <item name="android:textColor">@color/AlmostWhite</item>
+        <item name="android:textColorPrimaryInverse">@color/AlmostWhite</item>
+    </style>
+    <style name="checkBoxStyle" parent="Base.Theme.AppCompat">
+        <item name="colorAccent">@color/colorPrimaryA</item>
+        <item name="android:textColorSecondary">@color/colorButtonA</item>
     </style>
 </resources>

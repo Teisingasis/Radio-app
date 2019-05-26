@@ -22,11 +22,10 @@
     <TextView
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
+        android:fontFamily="sans-serif-medium"
         android:paddingTop="3dp"
         android:text="@string/app_name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/LightGreyText"
+        android:textColor="@color/AlmostWhite"
         android:textSize="14dp"
         android:layout_gravity="left"
         android:gravity="center"/>

@@ -10,13 +10,13 @@
             android:toDegrees="0">
             <shape android:shape="rectangle">
                 <corners android:topRightRadius="4dp"/>
-                <solid android:color="@color/colorButtonGradient3" />
+                <solid android:color="#0AB388" />
             </shape>
         </rotate>
     </item>
     <item android:left="4dp">
         <shape android:shape="rectangle">
-            <solid android:color="@color/colorButtonGradient3" />
+            <solid android:color="#0AB388" />
             <corners android:topRightRadius="4dp"
                 android:bottomLeftRadius="4dp"
                 android:bottomRightRadius="4dp"/>

@@ -13,5 +13,7 @@
 
     <color name="AlmostWhite">#DADFDF</color>
     <color name="LightGreyText">#ABB4B4</color>
+    <color name="grey">#C1ABB4B4</color>
+
 
 </resources>

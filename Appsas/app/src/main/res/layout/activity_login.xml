@@ -28,31 +28,30 @@
     <EditText
         android:id="@+id/login"
         style="@style/Widget.AppCompat.AutoCompleteTextView"
-        android:layout_width="300dp"
-        android:layout_height="43dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/imageView3"
         android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
         android:background="@color/fui_transparent"
         android:cursorVisible="true"
-        android:drawableLeft="@drawable/ic_email"
         android:drawableStart="@drawable/ic_email"
+        android:drawableLeft="@drawable/ic_email"
         android:drawablePadding="5dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:padding="10dp"
+        android:singleLine="true"
         android:textColor="#F7F6F6"
-        android:textColorHighlight="#B2E47F"
+        android:textColorHighlight="#86D5AC"
         android:textColorHint="#C1ABB4B4"
         android:textColorLink="#86D5AC"
-        android:singleLine="true"
-        android:textCursorDrawable="@drawable/cursor"
-         />
+        android:textCursorDrawable="@drawable/cursor" />
     <View
-        android:layout_width="300dp"
-        android:layout_height="2dp"
+        android:layout_width="320dp"
+        android:layout_height="1dp"
         android:background="@color/colorButtonA"
         android:layout_centerHorizontal="true"
         android:layout_alignBottom="@id/login"
@@ -60,8 +59,8 @@
 
     <EditText
         android:id="@+id/passwd"
-        android:layout_width="300dp"
-        android:layout_height="43dp"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/login"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
@@ -75,13 +74,14 @@
         android:inputType="textPassword"
         android:padding="10dp"
         android:textColor="#F7F6F6"
-        android:textColorHighlight="#B2E47F"
+        android:textColorHighlight="#86D5AC"
         android:textColorHint="#C1ABB4B4"
         android:textColorLink="#86D5AC"
         android:textCursorDrawable="@drawable/cursor" />
     <View
-        android:layout_width="300dp"
-        android:layout_height="2dp"
+        android:id="@+id/line1"
+        android:layout_width="320dp"
+        android:layout_height="1dp"
         android:layout_centerHorizontal="true"
         android:layout_alignBottom="@id/passwd"
         android:background="@color/colorButtonA"
@@ -91,9 +91,9 @@
         android:id="@+id/button"
         android:layout_width="200dp"
         android:layout_height="48dp"
-        android:layout_below="@+id/passwd"
+        android:layout_below="@+id/checkRememberMe"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/roundbutton2"
         android:fontFamily="sans-serif-medium"
         android:text="Login"
@@ -155,9 +155,9 @@
     <Button
         android:id="@+id/remind"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@id/passwd"
-        android:layout_marginTop="0.5dp"
+        android:layout_marginTop="2dp"
         android:layout_alignRight="@id/passwd"
         android:layout_alignEnd="@id/passwd"
         android:background="@android:color/transparent"
@@ -183,7 +183,7 @@
         android:layout_marginTop="25dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="40dp"
+        android:layout_alignLeft="@id/line1"
         android:layout_toLeftOf="@id/Or"
         android:background="#C1ABB4B4"
         />
@@ -194,7 +194,7 @@
         android:layout_marginTop="25dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginRight="40dp"
+        android:layout_alignRight="@id/line1"
         android:layout_toRightOf="@id/Or"
 
         android:background="#C1ABB4B4"
@@ -202,9 +202,16 @@
 
     <CheckBox
         android:id="@+id/checkRememberMe"
+        android:layout_below="@id/passwd"
+        android:layout_marginTop="2dp"
+        android:layout_alignLeft="@id/passwd"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Isiminti"/>
+        android:layout_height="40dp"
+        android:text="Remember me"
+        android:fontFamily="sans-serif-medium"
+        android:theme="@style/checkBoxStyle"
+
+        android:textColor="@color/colorButtonA"/>
 
 
 </RelativeLayout>
