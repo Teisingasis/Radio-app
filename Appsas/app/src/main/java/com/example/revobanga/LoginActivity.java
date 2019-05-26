@@ -20,6 +20,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -28,7 +29,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     EditText loginEmail, loginPassword;
-    Button loginButton, registerButton, newPassButton;
+    Button loginButton, registerButton, newPassButton, guestButton;
     private static final int RC_SIGN_IN = 9001;
     private SignInButton signInButton;
     private CheckBox CheckRemember;
@@ -48,6 +49,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
         loginEmail = (EditText) findViewById(R.id.login);
         loginPassword = (EditText) findViewById(R.id.passwd);
+        guestButton = (Button) findViewById(R.id.guest);
         loginButton = (Button) findViewById(R.id.button);
         signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setSize(1);
@@ -84,6 +86,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         getPreferencesData();
         Login();
         Register();
+        Guest();
     }
 
     private void getPreferencesData(){
@@ -208,6 +211,27 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
+    }
+
+    private void Guest() {
+
+        guestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Task<AuthResult> task = firebaseAuth.signInAnonymously();
+                task.addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+            }
+        });
+
+
     }
 }
 //  private static final String TAG = RegisterActivity.class.getSimpleName();

@@ -199,7 +199,17 @@
         android:id="@+id/checkRememberMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Isiminti"/>
+        android:layout_below="@id/passwd"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@id/passwd"
+        android:text="Remember me"
+        android:textColor="@color/colorPrimaryA"/>
+
+    <Button
+        android:id="@+id/guest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guest" />
 
 
 </RelativeLayout>
