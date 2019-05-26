@@ -62,6 +62,7 @@ public class EditProfileFragment extends Fragment {
 
             }
         });
+        MainActivity.setHideKeyboardOnTouch(getActivity(),view.findViewById(R.id.editprofileparent));
 save.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {

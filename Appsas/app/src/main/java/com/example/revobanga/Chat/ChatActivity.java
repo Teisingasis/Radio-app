@@ -20,7 +20,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-
+import com.example.revobanga.MainActivity;
 import com.example.revobanga.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -180,6 +180,7 @@ pressed(v);
                 }
             }
         });
+        MainActivity.setHideKeyboardOnTouch(this,findViewById(R.id.rv_chat));
     }
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
