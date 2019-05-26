@@ -49,7 +49,7 @@
         android:padding="10dp"
         android:singleLine="true"
         android:textColor="@color/LightGreyText"
-        android:textColorHighlight="#7CB342"
+        android:textColorHighlight="#86D5AC"
         android:textColorHint="@color/LightGreyText"
         android:textSize="18dp" />
 
@@ -65,20 +65,20 @@
         android:padding="10dp"
         android:singleLine="true"
         android:textColor="@color/LightGreyText"
-        android:textColorHighlight="#7CB342"
+        android:textColorHighlight="#86D5AC"
         android:textColorHint="#C1AEB4AB"
         android:textSize="18dp" />
     <TextView
-        android:id="@+id/view_gender"
-        android:layout_width="370dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="10dp"
-        android:hint="Gender: none"
-        android:padding="10dp"
-        android:singleLine="true"
-        android:inputType="textCapWords"
-        android:textColorHighlight = "#ff7eff15"
-        android:textColorHint = "@color/LightGreyText"/>
+    android:id="@+id/view_gender"
+    android:layout_width="370dp"
+    android:layout_height="43dp"
+    android:layout_marginBottom="10dp"
+    android:hint="Gender: none"
+    android:padding="10dp"
+    android:singleLine="true"
+    android:inputType="textCapWords"
+    android:textColorHighlight = "#86D5AC"
+    android:textColorHint = "@color/LightGreyText"/>
 <!--<RelativeLayout-->
     <!--android:layout_width="wrap_content"-->
     <!--android:layout_height="wrap_content">-->
