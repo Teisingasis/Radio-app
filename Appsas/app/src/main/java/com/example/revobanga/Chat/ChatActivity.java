@@ -4,8 +4,6 @@ package com.example.revobanga.Chat;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.percent.PercentLayoutHelper;
-import android.support.percent.PercentRelativeLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -100,15 +98,12 @@ pressed(v);
                     RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) holder.messageText.getLayoutParams();
                     params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                     params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 0);
+                    params.setMargins(150,0,0,0);
                     params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
                     params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
                     holder.messageText.setLayoutParams(params); //causes layout update
                     holder.messageText.setBackgroundResource(R.drawable.chatoutgoing);
-                    PercentRelativeLayout.LayoutParams p= (PercentRelativeLayout.LayoutParams) holder.messageText.getLayoutParams();
-                    PercentLayoutHelper.PercentLayoutInfo info = p.getPercentLayoutInfo();
-                    info.leftMarginPercent=35*0.01f;
-                    info.rightMarginPercent=0;
-                    holder.messageText.setLayoutParams(p);
+
 
                     // sender
                     params = (RelativeLayout.LayoutParams) holder.nameText.getLayoutParams();
@@ -134,13 +129,9 @@ pressed(v);
                     params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 0);
                     params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
                     params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
+                    params.setMargins(0,0,150,0);
                     holder.messageText.setLayoutParams(params);
                     holder.messageText.setBackgroundResource(R.drawable.chatincoming);
-                    PercentRelativeLayout.LayoutParams p= (PercentRelativeLayout.LayoutParams) holder.messageText.getLayoutParams();
-                    PercentLayoutHelper.PercentLayoutInfo info = p.getPercentLayoutInfo();
-                    info.rightMarginPercent=35*0.01f;
-                    info.leftMarginPercent=0;
-                    holder.messageText.setLayoutParams(p);
 
                     //sender
                     params = (RelativeLayout.LayoutParams) holder.nameText.getLayoutParams();
