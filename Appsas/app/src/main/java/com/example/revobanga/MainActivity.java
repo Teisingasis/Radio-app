@@ -215,6 +215,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 startActivity(i);
                                 Intent myService = new Intent(MainActivity.this, MediaPlayerService.class);
                                 stopService(myService);
+                                if(player.mediaPlayer.isPlaying()){
+                                    player.mediaPlayer.stop();
+                                }else if(player2.mediaPlayer.isPlaying()){
+                                    player2.mediaPlayer.stop();
+                                }
                                 finish();
                             }
                         });
@@ -223,6 +228,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(getApplicationContext(),"Logged Out",Toast.LENGTH_SHORT).show();
                 Intent myService = new Intent(MainActivity.this, MediaPlayerService.class);
                 stopService(myService);
+                if(player.mediaPlayer.isPlaying()){
+                    player.mediaPlayer.stop();
+                }
+                else if(player2.mediaPlayer.isPlaying()){
+                    player2.mediaPlayer.stop();
+                }
                 finish();
                 break;
         }
