@@ -217,8 +217,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 stopService(myService);
                                 if(player.mediaPlayer.isPlaying()){
                                     player.mediaPlayer.stop();
+                                    player.mediaPlayer.release();
                                 }else if(player2.mediaPlayer.isPlaying()){
                                     player2.mediaPlayer.stop();
+                                    player2.mediaPlayer.release();
                                 }
                                 finish();
                             }
@@ -230,9 +232,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 stopService(myService);
                 if(player.mediaPlayer.isPlaying()){
                     player.mediaPlayer.stop();
+                    player.mediaPlayer.release();
                 }
                 else if(player2.mediaPlayer.isPlaying()){
                     player2.mediaPlayer.stop();
+                    player2.mediaPlayer.release();
                 }
                 finish();
                 break;
