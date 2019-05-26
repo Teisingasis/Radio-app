@@ -4,9 +4,13 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorPrimaryA">#277E67</color>
     <color name="colorAccent">#277E67</color>
-    <color name="colorButtonA">#2D3030</color>
+    <color name="colorButtonA">#222627</color>
     <color name="colorBackground">#343C3D</color>
-    <color name="colorButtonGradient1">#1A6655</color>
+    <color name="colorButtonGradient1">#0C6B54</color>
+    <color name="colorButtonGradient2">#179D77</color>
+    <color name="colorButtonGradient3">#27B081</color>
+    <color name="darkgrey">#222627</color>
+
     <color name="LightGreyText">#C1ABB4B4</color>
 
 </resources>
