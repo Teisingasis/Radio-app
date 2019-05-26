@@ -1,12 +1,14 @@
 package com.example.revobanga;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -29,6 +31,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     Button loginButton, registerButton, newPassButton;
     private static final int RC_SIGN_IN = 9001;
     private SignInButton signInButton;
+    private CheckBox CheckRemember;
+    private SharedPreferences Prefs;
+    private static final String PREFS_NAME = "PrefsFile";
 //    private Button signInButton;
     FirebaseAuth firebaseAuth;
     GoogleApiClient mGoogleApiClient;
@@ -38,6 +43,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
+
+        Prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+
         loginEmail = (EditText) findViewById(R.id.login);
         loginPassword = (EditText) findViewById(R.id.passwd);
         loginButton = (Button) findViewById(R.id.button);
@@ -45,6 +53,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         signInButton.setSize(1);
 //        signInButton =  findViewById(R.id.sign_in_button);
         newPassButton = (Button) findViewById(R.id.remind);
+        CheckRemember = (CheckBox) findViewById(R.id.checkRememberMe);
         firebaseAuth = FirebaseAuth.getInstance();
         if (firebaseAuth.getCurrentUser() != null) {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
@@ -72,9 +81,27 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                  startActivity(new Intent(LoginActivity.this, NewPasswordActivity.class));
              }
          });
+        getPreferencesData();
         Login();
         Register();
     }
+
+    private void getPreferencesData(){
+        SharedPreferences sp = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        if(sp.contains("pref_email")){
+            String em = sp.getString("pref_email", "not found.");
+            loginEmail.setText(em.toString());
+        }
+        if (sp.contains("pref_pass")){
+            String psw = sp.getString("pref_pass", "not found.");
+            loginPassword.setText(psw.toString());
+        }
+        if(sp.contains("pref_check")){
+            Boolean b = sp.getBoolean("pref_check", false);
+            CheckRemember.setChecked(b);
+        }
+    }
+
 
     private void signIn() {
         Intent signIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
@@ -129,6 +156,17 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 if (TextUtils.isEmpty(password)) {
                     Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
                     return;
+                }
+
+                if(CheckRemember.isChecked()){
+                    Boolean boolIsChecked = CheckRemember.isChecked();
+                    SharedPreferences.Editor editor = Prefs.edit();
+                    editor.putString("pref_email", loginEmail.getText().toString());
+                    editor.putString("pref_pass", loginPassword.getText().toString());
+                    editor.putBoolean("pref_check", boolIsChecked);
+                    editor.apply();
+                } else {
+                    Prefs.edit().clear().apply();
                 }
                 firebaseAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
