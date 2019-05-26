@@ -1,5 +1,6 @@
 package com.example.revobanga;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -19,6 +20,10 @@ import android.view.MenuItem;
 import	android.text.TextUtils;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -326,5 +331,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
+    }
+    public static void setHideKeyboardOnTouch(final Context context, View view) {
+        //Set up touch listener for non-text box views to hide keyboard.
+        try {
+            //Set up touch listener for non-text box views to hide keyboard.
+            if (!(view instanceof EditText || view instanceof ScrollView)) {
+
+                view.setOnTouchListener(new View.OnTouchListener() {
+
+                    public boolean onTouch(View v, MotionEvent event) {
+                        InputMethodManager in = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                        in.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                        return false;
+                    }
+
+                });
+            }
+            //If a layout container, iterate over children and seed recursion.
+            if (view instanceof ViewGroup) {
+
+                for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+
+                    View innerView = ((ViewGroup) view).getChildAt(i);
+
+                    setHideKeyboardOnTouch(context, innerView);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

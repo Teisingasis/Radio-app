@@ -13,6 +13,8 @@
     android:orientation="vertical"
     android:gravity="center_vertical"
 
+    android:id="@+id/loginparent"
+
     >
     <ImageView
         android:id="@+id/imageView3"
