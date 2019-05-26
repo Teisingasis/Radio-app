@@ -9,16 +9,26 @@
         android:layout_height="wrap_content"
         android:id="@+id/tv_sender"
         android:text="Sender"
-        android:textSize="11sp"
+        android:textSize="13sp"
         android:layout_marginBottom="5dp"
 
         />
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_message"
         android:text="Message"
-        android:textSize="14sp"
+        android:textSize="17sp"
         android:layout_below="@id/tv_sender"
         android:layout_marginBottom="10dp"/>
+    <TextView
+        android:id="@+id/text_message_time"
+        android:text="11:40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginLeft="7sp"
+        android:layout_marginRight="7sp"
+android:layout_alignBottom="@id/tv_message"
+        />
 </RelativeLayout>
