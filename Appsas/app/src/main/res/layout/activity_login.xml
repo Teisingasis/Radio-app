@@ -26,8 +26,8 @@
         android:layout_marginTop="30dp"
         android:background="@android:color/transparent"
         android:cursorVisible="true"
-        android:drawableLeft="@drawable/ic_login"
-        android:drawableStart="@drawable/ic_login"
+        android:drawableLeft="@drawable/ic_email"
+        android:drawableStart="@drawable/ic_email"
         android:drawablePadding="5dp"
         android:ems="10"
         android:hint="Email"
@@ -194,5 +194,12 @@
         android:layout_toRightOf="@id/Or"
         android:background="#C1ABB4B4"
         />
+
+    <CheckBox
+        android:id="@+id/checkRememberMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Isiminti"/>
+
 
 </RelativeLayout>

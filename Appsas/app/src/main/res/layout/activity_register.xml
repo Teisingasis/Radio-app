@@ -1,78 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 android:gravity="center"
 android:orientation="vertical"
-android:padding="10dp" >
+android:padding="10dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingRight="10dp"
+    android:paddingEnd="10dp"
+    android:background="@color/colorBackground">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="20dp"
+        app:srcCompat="@drawable/final123" />
 
 <EditText
 android:id="@+id/username"
-android:layout_width="fill_parent"
+android:layout_width="370dp"
 android:layout_height="wrap_content"
 android:layout_marginBottom="10dp"
     android:hint="Username"
-android:padding="10dp"
+    android:drawableStart="@drawable/ic_login"
+    android:drawableLeft="@drawable/ic_login"
+    android:drawablePadding="5dp"
+    android:padding="10dp"
 android:singleLine="true"
 android:inputType="textCapWords"
     android:textColorHighlight = "#ff7eff15"
-    android:textColorHint = "#ffff25e6"/>
+    android:textColor="#F0F5F5"
+    android:textColorHint = "@color/LightGreyText"
+    android:backgroundTint="@color/colorButtonA"
+    />
+
+
+    <!--<View-->
+        <!--android:layout_width="350dp"-->
+        <!--android:layout_height="2dp"-->
+        <!--android:layout_marginTop="@id/username"-->
+        <!--android:background="@color/colorButtonA"-->
+        <!--/>-->
 
 <EditText
 android:id="@+id/email"
-android:layout_width="fill_parent"
+android:layout_width="370dp"
 android:layout_height="wrap_content"
 android:layout_marginBottom="10dp"
     android:hint="Email"
+    android:drawableStart="@drawable/ic_email"
+    android:drawableLeft="@drawable/ic_email"
+    android:drawablePadding="5dp"
 android:inputType="textEmailAddress"
 android:padding="10dp"
 android:singleLine="true"
     android:textColorHighlight = "#ff7eff15"
-    android:textColorHint = "#ffff25e6" />
+    android:textColor="#F0F5F5"
+    android:textColorHint = "@color/LightGreyText"
+    android:backgroundTint="@color/colorButtonA"/>
 
 <EditText
 android:id="@+id/password"
-android:layout_width="fill_parent"
+android:layout_width="370dp"
 android:layout_height="wrap_content"
 android:layout_marginBottom="10dp"
 android:hint="Password"
+    android:drawableStart="@drawable/ic_password"
+    android:drawableLeft="@drawable/ic_password"
+    android:drawablePadding="5dp"
 android:inputType="textPassword"
 android:padding="10dp"
 android:singleLine="true"
     android:textColorHighlight = "#ff7eff15"
-    android:textColorHint = "#ffff25e6" />
-    <EditText
-        android:id="@+id/RegName"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:hint="Full Name"
-        android:padding="10dp"
-        android:singleLine="true"
-        android:textColorHighlight = "#ff7eff15"
-        android:textColorHint = "#ffff25e6" />
+    android:textColor="#F0F5F5"
+    android:textColorHint = "@color/LightGreyText"
+    android:backgroundTint="@color/colorButtonA" />
+
+        <EditText
+            android:id="@+id/RegName"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Full Name"
+            android:drawableStart="@drawable/ic_acc"
+            android:drawableLeft="@drawable/ic_acc"
+            android:drawablePadding="5dp"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColorHighlight = "#ff7eff15"
+            android:textColor="#F0F5F5"
+            android:textColorHint = "@color/LightGreyText"
+            android:backgroundTint="@color/colorButtonA"/>
 
     <!-- Login Button -->
 
 <Button
 android:id="@+id/btnRegister"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content"
-android:layout_marginTop="20dip"
-android:background="#ea4c88"
+android:layout_width="250dp"
+android:layout_height="48dp"
+android:layout_marginTop="20dp"
+android:background="@drawable/roundbutton2"
 android:text="Register" />
 
     <!-- Link to Login Screen -->
 
 <Button
 android:id="@+id/btnLinkToLoginScreen"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content"
-android:layout_marginTop="40dip"
-android:background="@null"
-android:text="Already register! Log Me."
+android:layout_width="250dp"
+android:layout_height="48dp"
+android:layout_marginTop="15dp"
+android:background="@drawable/roundbutton3"
+android:text="Already registered? Log in"
 android:textAllCaps="false"
+    android:textColor="@color/LightGreyText"
 android:textSize="15dp" />
 
-    </LinearLayout>
+
+
+</LinearLayout>
