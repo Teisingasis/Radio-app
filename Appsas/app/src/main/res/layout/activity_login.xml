@@ -14,6 +14,7 @@
     tools:context=".MainActivity"
     android:orientation="vertical"
     android:gravity="center_horizontal|center_vertical"
+    android:id="@+id/loginparent"
 
     >
     <ImageView

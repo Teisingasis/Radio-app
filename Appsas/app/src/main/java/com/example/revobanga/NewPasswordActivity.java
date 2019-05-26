@@ -52,7 +52,6 @@ public class NewPasswordActivity extends AppCompatActivity {
                         });
             }
         });
-
-
+        MainActivity.setHideKeyboardOnTouch(this,findViewById(R.id.newpassparent));
     }
 }

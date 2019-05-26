@@ -84,5 +84,6 @@ pass=newPass.getText().toString();
                         });
             }
         });
+        MainActivity.setHideKeyboardOnTouch(this,findViewById(R.id.changepasswordparent));
     }
 }
