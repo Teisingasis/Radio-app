@@ -31,6 +31,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -99,45 +102,63 @@ pressed(v);
             protected void onBindViewHolder(@NonNull ChatViewHolder holder, int position, @NonNull Message model) {
 
                 if (model.sender.equals(Username)){
+                    //message
                     RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) holder.messageText.getLayoutParams();
                     params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                     params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 0);
-                    //  params.addRule(RelativeLayout.LEFT_OF, R.id.id_to_be_left_of);
                     params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
                     params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
                     holder.messageText.setLayoutParams(params); //causes layout update
+                    holder.messageText.setBackgroundResource(R.drawable.chatoutgoing);
+
+                    // sender
                     params = (RelativeLayout.LayoutParams) holder.nameText.getLayoutParams();
                     params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                     params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 0);
-                    //  params.addRule(RelativeLayout.LEFT_OF, R.id.id_to_be_left_of);
                     params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
                     params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
                     holder.nameText.setLayoutParams(params);
+
+
+                    // time
+                    params = (RelativeLayout.LayoutParams) holder.timeText.getLayoutParams();
+                      params.addRule(RelativeLayout.LEFT_OF, R.id.tv_message);
+                      params.addRule(RelativeLayout.RIGHT_OF,0);
+                    params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
+                    params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
+                    holder.timeText.setLayoutParams(params);
                 }
                 else {
+                    //message
                     RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) holder.messageText.getLayoutParams();
                     params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
                     params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 0);
                     params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
                     params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
                     holder.messageText.setLayoutParams(params);
+                    holder.messageText.setBackgroundResource(R.drawable.chatincoming);
+
+                    //sender
                     params = (RelativeLayout.LayoutParams) holder.nameText.getLayoutParams();
                     params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
                     params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 0);
                     params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
                     params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
                     holder.nameText.setLayoutParams(params);
+
+                    //time
+                    params = (RelativeLayout.LayoutParams) holder.timeText.getLayoutParams();
+                    params.addRule(RelativeLayout.RIGHT_OF, R.id.tv_message);
+                    params.addRule(RelativeLayout.LEFT_OF,0);
+                    params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
+                    params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
+                    holder.timeText.setLayoutParams(params);
                 }
                 holder.messageText.setText(model.message);
                 holder.nameText.setText(model.sender);
+                holder.timeText.setText(model.time);
 
             }
-//            @Override
-//            public int getItemViewType(int position) {
-//                Message msg = getItem(position);
-//
-//            }
-
         };
 
         rvMessage.setAdapter(adapter);
@@ -175,10 +196,14 @@ pressed(v);
 public void pressed(View v){
     if (v.getId() == R.id.btn){
         String message = messageArea.getText().toString().trim();
+        Calendar currentTime = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+        String time = simpleDateFormat.format(currentTime.getTime());
         if (!TextUtils.isEmpty(message)){
             Map<String, Object> param = new HashMap<>();
             param.put("sender", Username);
             param.put("message", message);
+            param.put("time",time);
 
             mFirebaseDatabase
                     .push()
@@ -222,12 +247,11 @@ public void GetUser(){
     public static class ChatViewHolder extends RecyclerView.ViewHolder {
 
         TextView messageText,timeText,nameText;
-        String type;
 
         public ChatViewHolder(View itemView) {
             super(itemView);
             messageText = (TextView) itemView.findViewById(R.id.tv_message);
-          //  timeText = (TextView) itemView.findViewById(R.id.text_message_time);
+            timeText = (TextView) itemView.findViewById(R.id.text_message_time);
             nameText = (TextView) itemView.findViewById(R.id.tv_sender);
         }
     }

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:background="#343C3D"
+    android:background="@color/colorBackground"
+
     android:paddingLeft="20dp"
     android:paddingTop="10dp"
     android:paddingRight="20dp"
@@ -15,16 +16,25 @@
     android:gravity="center_horizontal|center_vertical"
 
     >
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/final123" />
 
     <EditText
         android:id="@+id/login"
         style="@style/Widget.AppCompat.AutoCompleteTextView"
         android:layout_width="300dp"
         android:layout_height="43dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
         android:layout_below="@id/imageView3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:background="@android:color/transparent"
+        android:background="@color/fui_transparent"
         android:cursorVisible="true"
         android:drawableLeft="@drawable/ic_email"
         android:drawableStart="@drawable/ic_email"
@@ -37,14 +47,15 @@
         android:textColorHighlight="#B2E47F"
         android:textColorHint="#C1ABB4B4"
         android:textColorLink="#86D5AC"
+        android:singleLine="true"
         android:textCursorDrawable="@drawable/cursor"
          />
     <View
         android:layout_width="300dp"
         android:layout_height="2dp"
+        android:background="@color/colorButtonA"
         android:layout_centerHorizontal="true"
         android:layout_alignBottom="@id/login"
-        android:background="@color/colorButtonA"
         />
 
     <EditText
@@ -85,7 +96,6 @@
         android:layout_marginTop="50dp"
         android:background="@drawable/roundbutton2"
         android:fontFamily="sans-serif-medium"
-
         android:text="Login"
         android:textAllCaps="true"
         android:textColor="#232727"
@@ -100,23 +110,14 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/roundbutton3"
         android:fontFamily="sans-serif-medium"
-        android:textColor="@color/colorPrimaryA"
+        android:textColor="@color/LightGreyText"
         android:text="Sign up"
-        
         android:textAllCaps="true"
         android:textSize="18sp" />
 
 
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"
-        android:adjustViewBounds="false"
-        app:srcCompat="@drawable/final123" />
+
     <!--<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
         <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
         <!--xmlns:tools="http://schemas.android.com/tools"-->
@@ -158,10 +159,12 @@
         android:layout_below="@id/passwd"
         android:layout_marginTop="0.5dp"
         android:layout_alignRight="@id/passwd"
+        android:layout_alignEnd="@id/passwd"
         android:background="@android:color/transparent"
         android:text="Forgot password?"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimaryA" />
+
 
     <TextView
         android:id="@+id/Or"
@@ -185,6 +188,7 @@
         android:background="#C1ABB4B4"
         />
 
+
     <View
         android:layout_below="@id/button2"
         android:layout_marginTop="25dp"
@@ -192,6 +196,7 @@
         android:layout_height="1dp"
         android:layout_marginRight="40dp"
         android:layout_toRightOf="@id/Or"
+
         android:background="#C1ABB4B4"
         />
 
