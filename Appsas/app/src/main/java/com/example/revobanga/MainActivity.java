@@ -213,12 +213,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 Toast.makeText(getApplicationContext(),"Logged Out",Toast.LENGTH_SHORT).show();
                                 Intent i=new Intent(MainActivity.this,LoginActivity.class);
                                 startActivity(i);
+                                Intent myService = new Intent(MainActivity.this, MediaPlayerService.class);
+                                stopService(myService);
+                                finish();
                             }
                         });
                     firebaseAuth.signOut();
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 Toast.makeText(getApplicationContext(),"Logged Out",Toast.LENGTH_SHORT).show();
-                    finish();
+                Intent myService = new Intent(MainActivity.this, MediaPlayerService.class);
+                stopService(myService);
+                finish();
                 break;
         }
 
