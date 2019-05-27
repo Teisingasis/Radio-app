@@ -17,12 +17,16 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
 
 public class SettingsActivityN extends AppCompatActivity {
 
     Button deleteButton;
+    FirebaseAuth firebaseAuth;
 
     TextView tekstas;
     Switch colorSw;
@@ -36,6 +40,7 @@ public class SettingsActivityN extends AppCompatActivity {
         tekstas = findViewById(R.id.spalvos_tekstas);
         colorSw = (Switch)findViewById(R.id.color_switch);
         deleteButton = (Button)findViewById(R.id.rm_acc_button);
+        firebaseAuth = FirebaseAuth.getInstance();
 
         colorSw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -76,7 +81,10 @@ public class SettingsActivityN extends AppCompatActivity {
                                     finish();
                                 }
                                 else{
-                                    Toast.makeText(SettingsActivityN.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                    //Toast.makeText(SettingsActivityN.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                    Toast.makeText(SettingsActivityN.this, "Re-log to delete this account", Toast.LENGTH_LONG).show();
+                                    firebaseAuth.signOut();
+                                    startActivity(new Intent(SettingsActivityN.this, LoginActivity.class));
                                 }
                             }
                         });
