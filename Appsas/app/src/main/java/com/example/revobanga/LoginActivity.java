@@ -238,6 +238,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
 
     }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
+    }
 }
 //  private static final String TAG = RegisterActivity.class.getSimpleName();
 //    private Button btnLogin;
