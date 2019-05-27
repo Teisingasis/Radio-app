@@ -86,6 +86,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         getPreferencesData();
         Login();
         Register();
+        guestButton.setEnabled(true);
         Guest();
 
         MainActivity.setHideKeyboardOnTouch(this,findViewById(R.id.loginparent));
@@ -150,6 +151,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String email = loginEmail.getText().toString();
                 final String password = loginPassword.getText().toString();
 
@@ -220,6 +222,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         guestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
+                guestButton.setEnabled(false);
                 Task<AuthResult> task = firebaseAuth.signInAnonymously();
                 task.addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
