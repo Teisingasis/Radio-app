@@ -60,12 +60,7 @@ public class SettingsActivityN extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                user.delete();
-                Toast.makeText(SettingsActivityN.this, "Account Deleted", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(SettingsActivityN.this, MainActivity.class));
-                finish();
-                /*AlertDialog.Builder dialog = new AlertDialog.Builder(SettingsActivityN.this);
+                AlertDialog.Builder dialog = new AlertDialog.Builder(SettingsActivityN.this);
                 dialog.setTitle("Are you sure?");
                 dialog.setMessage("Deleting this account will result in completely removing your profile from the system.");
                 dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
@@ -77,7 +72,7 @@ public class SettingsActivityN extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()){
                                     Toast.makeText(SettingsActivityN.this, "Account Deleted", Toast.LENGTH_LONG).show();
-                                    startActivity(new Intent(SettingsActivityN.this, MainActivity.class));
+                                    startActivity(new Intent(SettingsActivityN.this, LoginActivity.class));
                                     finish();
                                 }
                                 else{
@@ -87,7 +82,17 @@ public class SettingsActivityN extends AppCompatActivity {
                         });
 
                     }
-                });*/
+                });
+
+                dialog.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog alertDialog = dialog.create();
+                alertDialog.show();
 
 
             }
