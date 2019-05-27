@@ -65,9 +65,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawer;
     public static Player player,player2;
 
-    public static MediaPlayer mediaPlayer = new MediaPlayer();
-    public static MediaPlayer mediaPlayer2 = new MediaPlayer();
-    public static MemberData member;
+    public static MediaPlayer mediaPlayer;
+    public static MediaPlayer mediaPlayer2;
     public static Station1Fragment fragment;
     public static Station2Fragment fragment2;
     private TextView txtName;
@@ -106,7 +105,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StationsFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_radioStations);
         }
-
+        mediaPlayer = new MediaPlayer();
+        mediaPlayer2 = new MediaPlayer();
         player = new Player(mediaPlayer, getString(R.string.link1),1);
         fragment = (Station1Fragment) getSupportFragmentManager().findFragmentByTag("station1");
         player.stationInitialize(getString(R.string.link1));
@@ -227,19 +227,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 stopService(myService);
                                 if(player.mediaPlayer.isPlaying()){
                                     player.mediaPlayer.stop();
-
-                                    player.mediaPlayer.release();
                                 }else if(player2.mediaPlayer.isPlaying()){
                                     player2.mediaPlayer.stop();
-                                    player2.mediaPlayer.release();
-                                } else {
-                                    player.mediaPlayer.release();
-                                    player2.mediaPlayer.release();
                                 }
                                 finish();
                             }
                         });
                     firebaseAuth.signOut();
+
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 Toast.makeText(getApplicationContext(),"Logged Out",Toast.LENGTH_SHORT).show();
                 Intent myService = new Intent(MainActivity.this, MediaPlayerService.class);
@@ -247,14 +242,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 if(player.mediaPlayer.isPlaying()){
                     player.mediaPlayer.stop();
-
-                    player.mediaPlayer.release();
                 }else if(player2.mediaPlayer.isPlaying()){
                     player2.mediaPlayer.stop();
-                    player2.mediaPlayer.release();
-                } else {
-                    player.mediaPlayer.release();
-                    player2.mediaPlayer.release();
                 }
                 finish();
                 break;
