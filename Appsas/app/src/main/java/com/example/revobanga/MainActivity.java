@@ -211,8 +211,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.logout:
                 FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
                 if (user.isAnonymous()){
+                    if (currentUserID != null && username != null) {
+                        DatabaseReference drUsers = FirebaseDatabase.getInstance().getReference("Users").child(currentUserID);
+                        drUsers.removeValue();
+                    }
                     user.delete();
-
                 }
 
                 Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
