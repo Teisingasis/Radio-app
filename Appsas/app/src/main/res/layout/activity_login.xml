@@ -11,7 +11,7 @@
     android:paddingBottom="10dp"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:gravity="center_vertical"
+    android:gravity="center_vertical|center_horizontal"
 
     android:id="@+id/loginparent"
 
@@ -31,7 +31,6 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView3"
-
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@color/fui_transparent"
@@ -41,8 +40,8 @@
         android:drawablePadding="5dp"
         android:ems="10"
         android:hint="Email"
+        android:padding="5dp"
         android:inputType="textEmailAddress"
-        android:padding="10dp"
         android:singleLine="true"
         android:textColor="#F7F6F6"
         android:textColorHighlight="#86D5AC"
@@ -72,7 +71,7 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:padding="10dp"
+        android:padding="5dp"
         android:textColor="#F7F6F6"
         android:textColorHighlight="#86D5AC"
         android:textColorHint="#C1ABB4B4"
@@ -90,7 +89,7 @@
     <Button
         android:id="@+id/button"
         android:layout_width="200dp"
-        android:layout_height="48dp"
+        android:layout_height="45dp"
         android:layout_below="@+id/checkRememberMe"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
@@ -99,12 +98,12 @@
         android:text="Login"
         android:textAllCaps="true"
         android:textColor="#232727"
-        android:textSize="18sp" />
+         />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="200dp"
-        android:layout_height="48dp"
+        android:layout_height="45dp"
         android:layout_below="@+id/button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
@@ -128,15 +127,7 @@
         <!--android:layout_marginTop="4dp"-->
         <!--app:cardCornerRadius="8dp"-->
         <!--app:cardElevation="2dp">-->
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/sign_in_button"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_below="@id/Or"
-        android:layout_alignRight="@id/line1"
-        android:layout_toRightOf="@id/Or"
-        android:layout_marginTop="10dp"
-        />
+
 
         <!--<Button-->
             <!--android:id="@+id/sign_in_button"-->
@@ -213,7 +204,15 @@
         android:theme="@style/checkBoxStyle"
         android:textColor="@color/colorButtonA"/>
 
-
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@id/Or"
+        android:layout_alignRight="@id/line1"
+        android:layout_toRightOf="@id/Or"
+        android:layout_marginTop="10dp"
+        />
     <Button
         android:id="@+id/guest"
         android:layout_below="@id/Or"

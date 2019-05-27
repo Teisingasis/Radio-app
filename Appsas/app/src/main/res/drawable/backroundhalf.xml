@@ -5,7 +5,7 @@
         android:width="200dp"
         android:height="150dp"/>
     <solid
-        android:color="@color/colorPrimaryA"/>
+        android:color="@color/colorButtonGradient2"/>
 
 
 </shape>

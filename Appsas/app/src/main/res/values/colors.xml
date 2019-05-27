@@ -12,7 +12,11 @@
     <color name="darkgrey">#222627</color>
 
     <color name="AlmostWhite">#DADFDF</color>
-    <color name="LightGreyText">#ABB4B4</color>
+    <color name="White">#F7F6F6</color>
+
     <color name="grey">#C1ABB4B4</color>
+
+    <color name="LightGreyText1">#FF979996</color>
+    <color name="LightGreyText">#ABB4B4</color>
 
 </resources>

@@ -2,15 +2,16 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
-android:layout_height="fill_parent"
-android:gravity="center"
-android:orientation="vertical"
-android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
     android:paddingTop="10dp"
     android:paddingBottom="10dp"
     android:paddingRight="20dp"
-    android:paddingEnd="20dp"
+    android:paddingLeft="20dp"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal|center_vertical"
+    android:gravity="center"
     android:background="@color/colorBackground">
 
     <ImageView
@@ -22,7 +23,7 @@ android:padding="10dp"
 
     <EditText
         android:id="@+id/username"
-        android:layout_width="fill_parent"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -51,12 +52,13 @@ android:padding="10dp"
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="fill_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/colorButtonA"
+        android:cursorVisible="true"
         android:drawableStart="@drawable/ic_email"
         android:drawableLeft="@drawable/ic_email"
         android:drawablePadding="5dp"
@@ -65,14 +67,13 @@ android:padding="10dp"
         android:padding="10dp"
         android:singleLine="true"
         android:textColor="#F0F5F5"
-        android:cursorVisible="true"
-        android:textCursorDrawable="@drawable/cursor"
         android:textColorHighlight="#86D5AC"
-        android:textColorHint="@color/LightGreyText" />
+        android:textColorHint="@color/LightGreyText"
+        android:textCursorDrawable="@drawable/cursor" />
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="fill_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -93,7 +94,7 @@ android:padding="10dp"
 
     <EditText
         android:id="@+id/RegName"
-        android:layout_width="fill_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"

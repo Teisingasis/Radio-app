@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         guestButton = (Button) findViewById(R.id.guest);
         loginButton = (Button) findViewById(R.id.button);
         signInButton = (SignInButton) findViewById(R.id.sign_in_button);
-        signInButton.setSize(1);
+        signInButton.setSize(0);
 //        signInButton =  findViewById(R.id.sign_in_button);
         newPassButton = (Button) findViewById(R.id.remind);
         CheckRemember = (CheckBox) findViewById(R.id.checkRememberMe);
