@@ -225,10 +225,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 startActivity(i);
                                 Intent myService = new Intent(MainActivity.this, MediaPlayerService.class);
                                 stopService(myService);
+                                if(player.mediaPlayer.isPlaying()){
+                                    player.mediaPlayer.stop();
 
                                     player.mediaPlayer.release();
+                                }else if(player2.mediaPlayer.isPlaying()){
+                                    player2.mediaPlayer.stop();
                                     player2.mediaPlayer.release();
-
+                                } else {
+                                    player.mediaPlayer.release();
+                                    player2.mediaPlayer.release();
+                                }
                                 finish();
                             }
                         });
@@ -238,9 +245,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent myService = new Intent(MainActivity.this, MediaPlayerService.class);
                 stopService(myService);
 
+                if(player.mediaPlayer.isPlaying()){
+                    player.mediaPlayer.stop();
+
+                    player.mediaPlayer.release();
+                }else if(player2.mediaPlayer.isPlaying()){
+                    player2.mediaPlayer.stop();
+                    player2.mediaPlayer.release();
+                } else {
                     player.mediaPlayer.release();
                     player2.mediaPlayer.release();
-
+                }
                 finish();
                 break;
         }

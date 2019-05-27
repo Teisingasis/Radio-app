@@ -86,7 +86,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         getPreferencesData();
         Login();
         Register();
-        guestButton.setEnabled(true);
         Guest();
 
         MainActivity.setHideKeyboardOnTouch(this,findViewById(R.id.loginparent));
