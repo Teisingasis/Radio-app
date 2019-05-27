@@ -43,7 +43,7 @@
         android:textColorHighlight = "#ff7eff15"
         android:textColorHint = "#ffff25e6"/>
 
-    <EditText
+    <TextView
         android:id="@+id/edit_gender"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -51,9 +51,15 @@
         android:hint="Gender"
         android:padding="10dp"
         android:singleLine="true"
-        android:inputType="textCapWords"
         android:textColorHighlight = "#ff7eff15"
         android:textColorHint = "#ffff25e6"/>
+    <Button
+        android:id="@+id/btnEditGender"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="#ea4c88"
+        android:text="edit gender" />
     <Button
         android:id="@+id/btnSaveEdit"
         android:layout_width="fill_parent"
