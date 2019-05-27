@@ -21,13 +21,13 @@
             android:drawableLeft="@drawable/ic_email"
             android:drawablePadding="5dp"
             android:ems="10"
-            android:hint="Email"
+            android:hint="Enter your email"
             android:inputType="textEmailAddress"
-            android:padding="10dp"
+            android:padding="5dp"
             android:singleLine="true"
             android:textColor="#F7F6F6"
             android:textColorHighlight="#86D5AC"
-            android:textColorHint="#C1ABB4B4"
+            android:textColorHint="@color/LightGreyText"
             android:textColorLink="#86D5AC"
             android:textCursorDrawable="@drawable/cursor"
             />
@@ -50,7 +50,7 @@
         android:background="@drawable/roundbutton2"
         android:fontFamily="sans-serif-medium"
         android:textAllCaps="true"
-        android:textColor="#232727"
+        android:textColor="@color/colorButtonA"
         android:textSize="13sp"/>
 
 
