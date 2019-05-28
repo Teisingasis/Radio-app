@@ -77,7 +77,7 @@ public class Station1Fragment extends Fragment {
                 info.setText("Playing");
                 break;
             default:
-                info.setText("Not Ready");
+                info.setText("Loading");
                 break;
         }
     }
