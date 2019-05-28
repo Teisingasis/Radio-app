@@ -4,6 +4,17 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:indeterminateBehavior="repeat"
+        android:indeterminateTint="@color/colorButtonA"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:indeterminate="true"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="100dp"
