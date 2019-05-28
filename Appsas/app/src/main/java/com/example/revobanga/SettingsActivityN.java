@@ -15,6 +15,9 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -25,7 +28,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SettingsActivityN extends AppCompatActivity {
 
-    Button deleteButton;
+    Button deleteButton, backButton;
     FirebaseAuth firebaseAuth;
 
     TextView tekstas;
@@ -37,12 +40,12 @@ public class SettingsActivityN extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         ekranas = (ConstraintLayout)findViewById(R.id.ekranas);
-        tekstas = findViewById(R.id.spalvos_tekstas);
-        colorSw = (Switch)findViewById(R.id.color_switch);
+        /*tekstas = findViewById(R.id.spalvos_tekstas);
+        colorSw = (Switch)findViewById(R.id.color_switch);*/
         deleteButton = (Button)findViewById(R.id.rm_acc_button);
         firebaseAuth = FirebaseAuth.getInstance();
 
-        colorSw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        /*colorSw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
@@ -54,12 +57,21 @@ public class SettingsActivityN extends AppCompatActivity {
                     tekstas.setText("Baltas");
                 }
             }
+        });*/
+
+        backButton = (Button)findViewById(R.id.settings_back); //Back button
+        backButton.setOnClickListener(new View.OnClickListener() { //Back button pressed
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
         });
 
         delete();
 
     }
 
+    //Account delete
     private void delete(){
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +102,19 @@ public class SettingsActivityN extends AppCompatActivity {
                                 }
                                 else{
                                     //Toast.makeText(SettingsActivityN.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                                    Toast.makeText(SettingsActivityN.this, "Re-log to delete this account", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(SettingsActivityN.this, "Re-log to delete your account", Toast.LENGTH_LONG).show();
+
+                                    // **** Google account sign out nepatvarkyta **** //
+                                    /* Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                                            new ResultCallback<Status>() {
+                                                @Override
+                                                public void onResult(Status status) {
+                                                    startActivity(new Intent(SettingsActivityN.this, LoginActivity.class));
+                                                    finish();
+                                                }
+                                            });*/
+
+
                                     firebaseAuth.signOut();
                                     MainActivity.Reset(MainActivity.player.mediaPlayer,MainActivity.player2.mediaPlayer);
                                     startActivity(new Intent(SettingsActivityN.this, LoginActivity.class));

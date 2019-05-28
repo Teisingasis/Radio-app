@@ -104,6 +104,9 @@ public class RegisterActivity extends AppCompatActivity {
         if(firebaseAuth.getCurrentUser()!=null){
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
         }
+
+        MainActivity.setHideKeyboardOnTouch(this,findViewById(R.id.registerparent));
+
     }
     public void saveInfo(String username,String name){
 currentUserID=firebaseAuth.getCurrentUser().getUid();
