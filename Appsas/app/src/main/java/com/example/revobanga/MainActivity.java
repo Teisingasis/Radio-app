@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private FirebaseAuth.AuthStateListener authStateListener;
     DatabaseReference usRef;
     String username,currentUserID;
+    FirebaseUser user;
     private static final String TAG = MainActivity.class.getSimpleName();
 
 
@@ -174,6 +175,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
         switch (item.getItemId()) {
             case R.id.nav_profile:
+                user=FirebaseAuth.getInstance().getCurrentUser();
+                if (user.isAnonymous()){
+                    Toast.makeText(getApplicationContext(),"You have to be a registered user",Toast.LENGTH_SHORT).show();
+                }
                 screen = "profile";
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
                 break;
@@ -182,10 +187,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StationsFragment()).commit();
                 break;
             case R.id.nav_chat:
+                user=FirebaseAuth.getInstance().getCurrentUser();
                 if(username != null && !username.isEmpty()) {
                     startActivity(new Intent(MainActivity.this, ChatActivity.class));
                 }
-                else {
+                else if(user.isAnonymous()){
+                    Toast.makeText(getApplicationContext(),"You have to be a registered user",Toast.LENGTH_SHORT).show();
+                }
+                else{
                     Toast.makeText(getApplicationContext(),"You have to have username to enter",Toast.LENGTH_SHORT).show();
                 }
                 break;
@@ -209,7 +218,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(supportIntent1);
                 break;
             case R.id.logout:
-                FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+                user=FirebaseAuth.getInstance().getCurrentUser();
                 if (user.isAnonymous()){
                     if (currentUserID != null && username != null) {
                         DatabaseReference drUsers = FirebaseDatabase.getInstance().getReference("Users").child(currentUserID);
