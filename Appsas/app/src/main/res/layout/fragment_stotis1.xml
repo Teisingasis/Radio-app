@@ -13,6 +13,19 @@
         <!--android:textSize="30sp"-->
         <!--android:layout_centerInParent="true"/>-->
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:indeterminateBehavior="repeat"
+        android:indeterminateTint="@color/colorButtonA"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:indeterminate="true"
+
+        />
+
     <Button
         android:id="@+id/button5"
         android:layout_width="150dp"
