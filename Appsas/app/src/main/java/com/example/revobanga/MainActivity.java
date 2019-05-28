@@ -179,8 +179,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if (user.isAnonymous()){
                     Toast.makeText(getApplicationContext(),"You have to be a registered user",Toast.LENGTH_SHORT).show();
                 }
-                screen = "profile";
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+                else {
+                    screen = "profile";
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+                }
                 break;
             case R.id.nav_radioStations:
                 screen = "stations";
