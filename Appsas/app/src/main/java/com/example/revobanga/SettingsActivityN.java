@@ -78,12 +78,21 @@ public class SettingsActivityN extends AppCompatActivity {
                                 if(task.isSuccessful()){
                                     Toast.makeText(SettingsActivityN.this, "Account Deleted", Toast.LENGTH_LONG).show();
                                     startActivity(new Intent(SettingsActivityN.this, LoginActivity.class));
+//                                    if(MainActivity.player.mediaPlayer.isPlaying()){
+//                                        MainActivity.player.mediaPlayer.stop();
+//                                    }else if(MainActivity.player2.mediaPlayer.isPlaying()){
+//                                        MainActivity.player2.mediaPlayer.stop();
+//                                    }
+//                                    else {
+                                    MainActivity.Reset(MainActivity.player.mediaPlayer,MainActivity.player2.mediaPlayer);
+                                  //  }
                                     finish();
                                 }
                                 else{
                                     //Toast.makeText(SettingsActivityN.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                     Toast.makeText(SettingsActivityN.this, "Re-log to delete this account", Toast.LENGTH_LONG).show();
                                     firebaseAuth.signOut();
+                                    MainActivity.Reset(MainActivity.player.mediaPlayer,MainActivity.player2.mediaPlayer);
                                     startActivity(new Intent(SettingsActivityN.this, LoginActivity.class));
                                 }
                             }

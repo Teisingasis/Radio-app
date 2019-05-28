@@ -228,11 +228,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 startActivity(i);
                                 Intent myService = new Intent(MainActivity.this, MediaPlayerService.class);
                                 stopService(myService);
-                                if(player.mediaPlayer.isPlaying()){
-                                    player.mediaPlayer.stop();
-                                }else if(player2.mediaPlayer.isPlaying()){
-                                    player2.mediaPlayer.stop();
-                                }
+//                                if(player.mediaPlayer.isPlaying()){
+//                                    player.mediaPlayer.stop();
+//                                }else if(player2.mediaPlayer.isPlaying()){
+//                                    player2.mediaPlayer.stop();
+//                                }
+                                Reset(player.mediaPlayer,player2.mediaPlayer);
                                 finish();
                             }
                         });
@@ -243,11 +244,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent myService = new Intent(MainActivity.this, MediaPlayerService.class);
                 stopService(myService);
 
-                if(player.mediaPlayer.isPlaying()){
-                    player.mediaPlayer.stop();
-                }else if(player2.mediaPlayer.isPlaying()){
-                    player2.mediaPlayer.stop();
-                }
+                Reset(player.mediaPlayer,player2.mediaPlayer);
                 finish();
                 break;
         }
@@ -255,6 +252,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    public static void Reset(MediaPlayer play,MediaPlayer play2){
+        play.reset();
+        play.reset();
+    }
+
 
     @Override
     public void onBackPressed() {
