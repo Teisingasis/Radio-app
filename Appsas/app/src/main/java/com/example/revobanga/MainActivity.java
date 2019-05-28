@@ -266,10 +266,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //stationsFrag
                 if (backPressedTime + 2000 > System.currentTimeMillis()){
                     //super.onBackPressed();
-                    if (username == null /*&& username.isEmpty()*/){
-                        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    if (user.isAnonymous() /*&& username.isEmpty()*/){
+
                         firebaseAuth.signOut();
                         user.delete();
+
 
                     }
 

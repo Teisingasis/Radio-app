@@ -5,11 +5,11 @@
     android:id="@+id/ekranas"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@color/colorBackground"
     tools:context=".SettingsActivity">
 
 
-    <Switch
+    <!--<Switch
         android:id="@+id/notifications_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,11 +59,11 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.216" />
+        app:layout_constraintVertical_bias="0.216" />-->
 
     <Button
         android:id="@+id/rm_acc_button"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -71,15 +71,68 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/roundbutton2"
         android:text="Remove account"
+        android:textColor="@color/colorButtonA"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/color_switch"
-        app:layout_constraintVertical_bias="0.221" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.458" />
 
-    <EditText
+    <!--<Button
+        android:id="@+id/settings_back"
+        android:layout_weight="0.5"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:background="@drawable/buttonback"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_weight="3"
+        android:layout_height="50dp"
+        android:background="@color/colorButtonA"
+        android:text="Settings"
+        android:textAlignment="gravity"
+        android:paddingLeft="5dp"
+        android:gravity="center_vertical"
+        android:fontFamily="sans-serif"
+        android:textSize="18dp"
+        android:textColor="@color/AlmostWhite"
+        android:textStyle="bold"
+        />-->
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/settings_back"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.5"
+            android:background="@drawable/buttonback" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="3"
+            android:background="@color/colorButtonA"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp"
+            android:text="Settings"
+            android:textAlignment="gravity"
+            android:textColor="@color/AlmostWhite"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!--<EditText
         android:id="@+id/bug_report"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -98,5 +151,5 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rm_acc_button"
-        app:layout_constraintVertical_bias="0.404" />
+        app:layout_constraintVertical_bias="0.404" />-->
 </android.support.constraint.ConstraintLayout>

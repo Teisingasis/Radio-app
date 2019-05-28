@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +17,9 @@ public class Station2Fragment extends Fragment {
     Player player = MainActivity.player2;
     Player player2 = MainActivity.player;
     View view;
+    Button play;
     static TextView info;
+    static ProgressBar spinner;
 
     @Nullable
     @Override
@@ -26,11 +29,13 @@ public class Station2Fragment extends Fragment {
         MainActivity.fragment2= (Station2Fragment) getFragmentManager().findFragmentByTag("station2");
         state(player.state);
         playPause();
+        spinner= view.findViewById(R.id.progressBar);
+        spinner.setVisibility(View.GONE);
         return view;
     }
 
     public void playPause() {
-        Button play = view.findViewById(R.id.button6);
+         play = view.findViewById(R.id.button6);
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +47,16 @@ public class Station2Fragment extends Fragment {
                     Toast.makeText(getActivity().getApplicationContext(),
                             "Please turn off first station", Toast.LENGTH_LONG)
                             .show();
+                }
+                if(!player.mediaPlayer.isPlaying())
+                {
+                    play.setBackgroundResource(R.drawable.play3);
+                    spinner.setVisibility(View.GONE);
+                }
+                if(player.mediaPlayer.isPlaying())
+                {
+                    play.setBackgroundResource(R.drawable.play2);
+                    spinner.setVisibility(View.VISIBLE);
                 }
             }
         });

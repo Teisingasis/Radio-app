@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ public class Station1Fragment extends Fragment {
     static Button play;
     View view;
     static TextView info;
+    static ProgressBar spinner;
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -29,7 +31,8 @@ public class Station1Fragment extends Fragment {
         playPause();
               TextView scrollingText = view.findViewById(R.id.stations1playing);
       scrollingText.setSelected(true);
-
+         spinner= view.findViewById(R.id.progressBar);
+        spinner.setVisibility(View.GONE);
         return view;
     }
 
@@ -53,10 +56,12 @@ public class Station1Fragment extends Fragment {
                 if(!player.mediaPlayer.isPlaying())
                 {
                     play.setBackgroundResource(R.drawable.play3);
+                    spinner.setVisibility(View.GONE);
                 }
                 if(player.mediaPlayer.isPlaying())
                 {
                     play.setBackgroundResource(R.drawable.play2);
+                    spinner.setVisibility(View.VISIBLE);
                 }
             }
         });
