@@ -4,6 +4,7 @@ package com.example.revobanga.Chat;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,14 +18,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.revobanga.MainActivity;
 import com.example.revobanga.R;
+import com.example.revobanga.StationsFragment;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,7 +43,7 @@ import java.util.Map;
 public class ChatActivity  extends AppCompatActivity {
     private static final int SENT = 0;//ct
     private static final int RECEIVED = 1;//et
-    Button sendButton;
+    Button sendButton,backButton;
     EditText messageArea;
     RecyclerView rvMessage;
      String Username,CurrentUserID;
@@ -63,11 +67,19 @@ public class ChatActivity  extends AppCompatActivity {
         rvMessage.setLayoutManager(layoutManager);
         sendButton = (Button) findViewById(R.id.btn);
         messageArea = (EditText) findViewById(R.id.write);
-;
+        backButton=findViewById(R.id.btnBack);
+
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 pressed(v);
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
 
@@ -251,8 +263,15 @@ public void GetUser(){
             nameText = (TextView) itemView.findViewById(R.id.tv_sender);
         }
     }
+    @Override
+    public void onBackPressed() {
+
+                    super.onBackPressed();
 
 
         }
+    }
+
+
 
 
